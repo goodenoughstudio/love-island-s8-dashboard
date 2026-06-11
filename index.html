@@ -870,6 +870,14 @@ footer span { color: var(--pink); }
   letter-spacing: 0.06em;
   line-height: 1.4;
 }
+.couple-card { cursor: pointer; }
+.couple-more {
+  font-size: 10px;
+  color: var(--pink);
+  font-family: 'Space Mono', monospace;
+  margin-top: 10px;
+  letter-spacing: 0.06em;
+}
 .section-cta-wrap { display: flex; justify-content: center; margin-top: 8px; }
 .section-cta-btn {
   display: inline-flex;
@@ -1579,14 +1587,78 @@ const ODDS_DATA = [
 ];
 
 const COUPLES_NOW = [
-  { p1: "Aniya", p2: "KC", emoji: "🏆", odds: "31%", note: "OG Day 1 · Kalshi frontrunners", borderColor: "var(--cyan)", oddsColor: "var(--cyan)" },
-  { p1: "Kayda", p2: "Zach", emoji: "🌊", odds: "12%", note: "Day 2 steal · at risk", borderColor: "var(--pink)", oddsColor: "var(--pink)" },
-  { p1: "Kenzie", p2: "Caleb", emoji: "✨", odds: "8%", note: "Day 7 rescue arc", borderColor: "var(--yellow)", oddsColor: "var(--yellow)" },
-  { p1: "Sol", p2: "Sincere", emoji: "⚡", odds: "7%", note: "Day 7 bombshell chaos", borderColor: "var(--green)", oddsColor: "var(--green)" },
-  { p1: "Trinity", p2: "Bryce", emoji: "🌴", odds: "4%", note: "OG Day 1 · Jen complication", borderColor: "var(--purple)", oddsColor: "var(--purple)" },
-  { p1: "Melanie", p2: "Corbin", emoji: "💣", odds: "—", note: "Volatile · bottom odds", borderColor: "var(--orange)", oddsColor: "var(--muted)" },
-  { p1: "Beatriz", p2: "Gabriel", emoji: "⚠️", odds: "—", note: "Shaky · Gabriel straying", borderColor: "var(--purple)", oddsColor: "var(--muted)" },
-  { p1: "Jen Terry", p2: null, emoji: "💫", odds: "TBD", note: "New bombshell · flying solo", borderColor: "var(--yellow)", oddsColor: "var(--yellow)" },
+  {
+    p1: "Aniya", p1Id: 1, p2: "KC", p2Id: 9,
+    emoji: "🏆", odds: "31%", note: "OG Day 1 · Kalshi frontrunners",
+    borderColor: "var(--cyan)", oddsColor: "var(--cyan)",
+    daySince: "Day 1", combinedGrowth: "+77k",
+    howTogether: "Both left unchosen in the Day 1 coupling ceremony — paired by default when Sincere chose Melanie over Aniya. Built something genuine from an awkward start.",
+    threats: "Sincere planted a seed that Sol Dean resembles KC's ex. KC shut it down immediately — called Aniya 'the blueprint' and they had a terrace make-out cheered by the whole villa. Currently the most stable couple in the villa.",
+    chemistry: "Communication-first slow burn. KC explicitly addressed the unique challenges of dark-skinned Black women in reality TV dating. The internet's most protected pairing — fans are actively voting to keep them safe."
+  },
+  {
+    p1: "Kayda", p1Id: 8, p2: "Zach", p2Id: 16,
+    emoji: "🌊", odds: "12%", note: "Day 2 steal · at risk",
+    borderColor: "var(--pink)", oddsColor: "var(--pink)",
+    daySince: "Day 3", combinedGrowth: "+36k",
+    howTogether: "Kayda entered as a Day 2 bombshell, took Zach on a Paradise Cove date, and stole him from Kenzie at the Day 3 fire pit — leaving Kenzie single and vulnerable.",
+    threats: "Zach reversed an exclusivity conversation within 24 hours of the slumber party. Now actively bonding with bombshell Jen Terry over Taylor Swift and One Direction. Fans are shipping 'Solach' (Sol + Zach) as an alternate pairing.",
+    chemistry: "High initial physical chemistry. Kayda's calm, unyielding confidence — especially her 'get back' moment targeting Melanie — made her a fan favourite. Zach's wandering eye is the central vulnerability heading into the public vote."
+  },
+  {
+    p1: "Kenzie", p1Id: 10, p2: "Caleb", p2Id: 4,
+    emoji: "✨", odds: "8%", note: "Day 7 rescue arc · pending vote",
+    borderColor: "var(--yellow)", oddsColor: "var(--yellow)",
+    daySince: "Day 7", combinedGrowth: "+83k",
+    howTogether: "Ariana Madix introduced Caleb as a 'bonus bombshell' at the slumber party on Day 7. He bypassed normal protocols and went straight for Kenzie — they kissed immediately while Corbin watched from across the room.",
+    threats: "Kenzie is still officially coupled with Corbin until the Day 9 public vote results. The entire internet is voting to make Kenzie & Caleb official. Corbin is their only obstacle and the fans know it.",
+    chemistry: "The season's defining redemption arc. Kenzie graduated nursing school two weeks before the villa, survived Zach's rejection, endured Corbin's manipulation — and Caleb arrived like a rescue. Highest combined IG growth of any couple at +83k. Kim Kardashian shared Kenzie's SKIMS moment."
+  },
+  {
+    p1: "Sol", p1Id: 14, p2: "Sincere", p2Id: 13,
+    emoji: "⚡", odds: "7%", note: "Day 7 bombshell chaos · pending vote",
+    borderColor: "var(--green)", oddsColor: "var(--green)",
+    daySince: "Day 7", combinedGrowth: "+51k",
+    howTogether: "Sol Mýa Dean entered as a Day 7 bombshell. During the slumber party blindfolded challenge, she kissed Sincere — twice. Sol's red paint left on Sincere exposed the interaction before he could control the narrative.",
+    threats: "Sincere is still officially coupled with Melanie. He admitted to one kiss when Melanie confronted him — it was two. Melanie sensed his emotional withdrawal before he said a word. This triangle is the most volatile in the villa heading into the vote.",
+    chemistry: "Built entirely on instant physical attraction and immediate deception. Sincere risked blowing up his official pairing within 24 hours of Sol arriving. Their potential couple would completely dismantle Melanie and Sincere — which the internet is fully supporting."
+  },
+  {
+    p1: "Trinity", p1Id: 15, p2: "Bryce", p2Id: 3,
+    emoji: "🌴", odds: "4%", note: "OG Day 1 · Jen complication",
+    borderColor: "var(--purple)", oddsColor: "var(--purple)",
+    daySince: "Day 1", combinedGrowth: "+50k",
+    howTogether: "Trinity chose Bryce on Day 1, but both stood on the red dot — mutually agreeing to stay open. Neither was stolen by the Day 2 bombshells, so they defaulted back to each other and slowly built something real.",
+    threats: "Bryce whispered 'I know the blonde' when Jen Terry entered — they're LA modelling colleagues. Trinity is aware. Bryce has maintained focus on Trinity but the pre-existing connection adds a layer of unresolved tension.",
+    chemistry: "Slow burn across a 7-year age gap (Trinity 22, Bryce 29). The breakthrough came when Bryce opened up about childhood bullying on the Soul Ties terrace — Trinity admitted he was 'growing on her.' Still more warmth than fire, but the audience likes them."
+  },
+  {
+    p1: "Melanie", p1Id: 11, p2: "Sincere", p2Id: 13,
+    emoji: "💣", odds: "—", note: "Official couple · structurally imploding",
+    borderColor: "var(--orange)", oddsColor: "var(--muted)",
+    daySince: "Day 1", combinedGrowth: "+106k",
+    howTogether: "Melanie and Sincere were one of the Day 1 selections — Sincere chose Melanie over Aniya at the door ceremony. They've been on-and-off official ever since, recoupling on Day 6.",
+    threats: "Sincere kissed Sol Dean twice during the slumber party and lied about it. Melanie sensed his withdrawal before he said a word. The public vote threatens to reassign Sincere to Sol. Combined with Corbin's pull on Melanie, this couple is structurally imploding.",
+    chemistry: "Bonded over the Philadelphia Eagles on Day 1. What followed was 7 days of anxiety, abandonment fears, passive aggression, defensive meltdowns, and now a deception. Melanie's 'Give me 10' breakdown is the season's first viral meme. Reddit despises them. TikTok loves the chaos."
+  },
+  {
+    p1: "Beatriz", p1Id: 2, p2: "Gabriel", p2Id: 6,
+    emoji: "⚠️", odds: "—", note: "Shaky · Gabriel straying",
+    borderColor: "var(--purple)", oddsColor: "var(--muted)",
+    daySince: "Day 3", combinedGrowth: "+42k",
+    howTogether: "Gabriel entered as a Day 2 bombshell, took Beatriz on a Paradise Cove date, and stole her from Sean Reifel at the Day 3 fire pit — leaving Sean single and eventually dumped on Day 6.",
+    threats: "Gabriel kissed Sol Dean on the Soul Ties terrace on Day 7. Sol physically recoiled ('my body just wasn't into it, girl'). He's now showing interest in Jen Terry. Beatriz has massive individual fan support but Gabriel keeps straying.",
+    chemistry: "Started with strong physical chemistry but has since stalled. Beatriz privately raised compatibility concerns with the girls (country music, lifestyle gaps, stepmother hesitations). Gabriel's emotional vulnerability moment — explaining how exhausting it is to express feelings in his third language — softened fans slightly. But the pattern of straying is hard to overlook."
+  },
+  {
+    p1: "Jen Terry", p1Id: 7, p2: null, p2Id: null,
+    emoji: "💫", odds: "TBD", note: "New bombshell · flying solo",
+    borderColor: "var(--yellow)", oddsColor: "var(--yellow)",
+    daySince: "Day 7", combinedGrowth: "+6k",
+    howTogether: "Entered as a Day 7 bombshell alongside Sol Dean and Caleb McDaniel. Currently unmatched — the Day 9 public vote results will determine who she couples with.",
+    threats: "Bryce Dettloff whispered 'I know the blonde' when she entered (LA modelling colleagues). Zach immediately bonded with her over Taylor Swift and One Direction — the same day he'd discussed exclusivity with Kayda. Multiple complications already in motion.",
+    chemistry: "Quiet curiosity energy with high stakes attached to wherever she lands. Shares a hometown with host Ariana Madix (both Melbourne, FL) — fans are watching to see if that affects her edit. The Zach + Jen storyline is developing fast."
+  },
 ];
 
 let currentChartMode = 'current';
@@ -1632,14 +1704,87 @@ function renderIslanders(filter = 'all', sort = null) {
 
 // ===================== RENDER CURRENT COUPLES =====================
 function renderCurrentCouples() {
-  document.getElementById('couplesGrid').innerHTML = COUPLES_NOW.map(c => `
-    <div class="couple-card" style="border-top-color:${c.borderColor}">
+  document.getElementById('couplesGrid').innerHTML = COUPLES_NOW.map((c, idx) => `
+    <div class="couple-card" style="border-top-color:${c.borderColor}" onclick="openCoupleModal(${idx})">
       <div class="couple-odds" style="color:${c.oddsColor}">${c.odds}</div>
       <span class="couple-emoji">${c.emoji}</span>
       <div class="couple-names">${c.p1}${c.p2 ? `<span class="cx"> × </span>${c.p2}` : ''}</div>
       <div class="couple-note">${c.note}</div>
+      <div class="couple-more">stats &amp; story →</div>
     </div>
   `).join('');
+}
+
+function openCoupleModal(idx) {
+  const c = COUPLES_NOW[idx];
+  const i1 = c.p1Id ? ISLANDERS.find(i => i.id === c.p1Id) : null;
+  const i2 = c.p2Id ? ISLANDERS.find(i => i.id === c.p2Id) : null;
+  const accentColor = c.borderColor;
+
+  document.getElementById('modalAccentBar').style.background = accentColor;
+  document.getElementById('modalHeaderContent').innerHTML = `
+    <div style="margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <span style="font-size:32px">${c.emoji}</span>
+      <div style="flex:1">
+        <div class="modal-name">${c.p1}${c.p2 ? ` × ${c.p2}` : ''}</div>
+        <div class="modal-meta">${c.note}</div>
+      </div>
+      ${c.odds !== '—' && c.odds !== 'TBD' ? `<div style="font-family:'Space Mono',monospace;font-size:30px;font-weight:700;color:${c.oddsColor}">${c.odds}</div>` : ''}
+    </div>`;
+
+  const igGrowth1 = i1 && i1.igNow && i1.igPre ? `+${((i1.igNow - i1.igPre) / 1000).toFixed(0)}k` : '—';
+  const igGrowth2 = i2 && i2.igNow && i2.igPre ? `+${((i2.igNow - i2.igPre) / 1000).toFixed(0)}k` : '—';
+  const dramaColor = s => s >= 8 ? 'var(--pink)' : s >= 5 ? 'var(--yellow)' : 'var(--green)';
+
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:20px">
+      <div class="modal-stat-box">
+        <div class="msb-label">Together Since</div>
+        <div class="msb-val" style="font-size:16px;color:${accentColor}">${c.daySince}</div>
+      </div>
+      <div class="modal-stat-box">
+        <div class="msb-label">Combined IG Growth</div>
+        <div class="msb-val" style="color:var(--green)">${c.combinedGrowth}</div>
+      </div>
+      <div class="modal-stat-box">
+        <div class="msb-label">Kalshi Odds</div>
+        <div class="msb-val" style="color:${c.oddsColor}">${c.odds}</div>
+      </div>
+    </div>
+
+    ${i1 || i2 ? `
+    <div class="modal-section-title">✦ The Islanders</div>
+    <div style="display:grid;grid-template-columns:${i2 ? '1fr 1fr' : '1fr'};gap:8px;margin-bottom:4px">
+      ${i1 ? `<div class="modal-stat-box" style="cursor:pointer" onclick="closeModalDirect();setTimeout(()=>openModal(${i1.id}),100)">
+        <div style="font-size:14px;font-weight:700;margin-bottom:5px">${i1.name}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:2px">${i1.age} · ${i1.hometown}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">${i1.job}</div>
+        <div style="font-size:11px;font-family:'Space Mono',monospace;margin-bottom:2px">🔥 Drama: <span style="color:${dramaColor(i1.dramaScore)}">${i1.dramaScore}/10</span></div>
+        <div style="font-size:11px;font-family:'Space Mono',monospace;color:var(--green)">${igGrowth1} IG week 1</div>
+        <div style="font-size:10px;color:var(--pink);margin-top:6px;font-family:'Space Mono',monospace">full profile →</div>
+      </div>` : ''}
+      ${i2 ? `<div class="modal-stat-box" style="cursor:pointer" onclick="closeModalDirect();setTimeout(()=>openModal(${i2.id}),100)">
+        <div style="font-size:14px;font-weight:700;margin-bottom:5px">${i2.name}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:2px">${i2.age} · ${i2.hometown}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px">${i2.job}</div>
+        <div style="font-size:11px;font-family:'Space Mono',monospace;margin-bottom:2px">🔥 Drama: <span style="color:${dramaColor(i2.dramaScore)}">${i2.dramaScore}/10</span></div>
+        <div style="font-size:11px;font-family:'Space Mono',monospace;color:var(--green)">${igGrowth2} IG week 1</div>
+        <div style="font-size:10px;color:var(--pink);margin-top:6px;font-family:'Space Mono',monospace">full profile →</div>
+      </div>` : ''}
+    </div>` : ''}
+
+    <div class="modal-section-title">💕 How They Got Together</div>
+    <div style="background:rgba(255,60,172,0.06);border:1px solid rgba(255,60,172,0.15);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;margin-bottom:4px">${c.howTogether}</div>
+
+    <div class="modal-section-title">⚡ Current Threats</div>
+    <div style="background:rgba(255,107,53,0.06);border:1px solid rgba(255,107,53,0.2);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;margin-bottom:4px">${c.threats}</div>
+
+    <div class="modal-section-title">✨ Couple Chemistry</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.6;padding-bottom:4px">${c.chemistry}</div>
+  `;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
 // ===================== RENDER TIMELINE =====================
