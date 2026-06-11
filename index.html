@@ -10,19 +10,19 @@
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg: #0a0a0a;
-  --bg2: #111111;
-  --bg3: #161616;
-  --bg4: #1c1c1c;
+  --bg: #FFFCF7;
+  --bg2: #FFF5ED;
+  --bg3: #F2E8DC;
+  --bg4: #E8DAC8;
   --pink: #FF3CAC;
-  --yellow: #F9F002;
-  --cyan: #00F5FF;
-  --orange: #FF6B35;
-  --green: #39FF14;
-  --purple: #BF5AF2;
-  --white: #f0f0f0;
-  --muted: #666;
-  --border: #222;
+  --yellow: #C47800;
+  --cyan: #007A99;
+  --orange: #E55A20;
+  --green: #1A8A3A;
+  --purple: #8044CC;
+  --white: #1a1a1a;
+  --muted: #998877;
+  --border: #DDD0BC;
 }
 html { scroll-behavior: smooth; }
 body {
@@ -45,7 +45,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10,10,10,0.92);
+  background: rgba(255,252,247,0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0 2rem;
@@ -86,20 +86,33 @@ nav {
 /* ===== HERO ===== */
 .hero {
   position: relative;
-  padding: 80px 2rem 60px;
+  padding: 56px 2rem 0;
   text-align: center;
   overflow: hidden;
 }
 .hero::before {
   content: '';
   position: absolute;
-  top: -40%;
+  top: -20%;
   left: 50%;
   transform: translateX(-50%);
   width: 600px;
-  height: 600px;
-  background: radial-gradient(ellipse, rgba(255,60,172,0.12) 0%, transparent 65%);
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255,60,172,0.07) 0%, transparent 65%);
   pointer-events: none;
+}
+.hero-image-wrap {
+  margin: 28px -2rem 0;
+  overflow: hidden;
+  line-height: 0;
+}
+.hero-cast-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 640px) {
+  .hero-cast-img { max-height: 280px; object-fit: cover; object-position: center top; }
 }
 .hero-eyebrow {
   font-family: 'Space Mono', monospace;
@@ -122,13 +135,14 @@ nav {
   color: var(--muted);
   font-size: 15px;
   max-width: 480px;
-  margin: 0 auto 48px;
+  margin: 0 auto;
 }
 .hero-stats {
   display: flex;
   justify-content: center;
   gap: 48px;
   flex-wrap: wrap;
+  padding: 40px 0 56px;
 }
 .hero-stat {
   text-align: center;
@@ -309,7 +323,7 @@ section {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.55);
   z-index: 200;
   backdrop-filter: blur(4px);
   align-items: center;
@@ -677,9 +691,9 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
-.drama-intensity.high { background: rgba(255,60,172,0.2); color: var(--pink); }
-.drama-intensity.med { background: rgba(249,240,2,0.15); color: var(--yellow); }
-.drama-intensity.low { background: rgba(57,255,20,0.15); color: var(--green); }
+.drama-intensity.high { background: rgba(255,60,172,0.12); color: var(--pink); }
+.drama-intensity.med { background: rgba(196,120,0,0.12); color: var(--yellow); }
+.drama-intensity.low { background: rgba(26,138,58,0.12); color: var(--green); }
 .drama-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
 .names-row {
   display: flex;
@@ -981,6 +995,9 @@ footer span { color: var(--pink); }
   <p class="hero-eyebrow">Season 8 · Fiji · 2026 · Fan Dashboard</p>
   <h1>Love Island <span class="usa">USA</span><br><span class="s8">Season Eight</span></h1>
   <p class="hero-sub">All the data, drama, and digital chaos from the villa — through Ep. 7 · Peacock Thu–Tue · Aftersun w/ Ciara Miller &amp; Tefi Pessoa · Finale projected <span style="color:var(--yellow)">July 12</span></p>
+  <div class="hero-image-wrap">
+    <img src="hero.png" alt="Love Island USA Season 8 cast" class="hero-cast-img">
+  </div>
   <div class="hero-stats">
     <div class="hero-stat">
       <span class="num mono" style="color:var(--pink)" data-target="824" data-suffix="M">0</span>
