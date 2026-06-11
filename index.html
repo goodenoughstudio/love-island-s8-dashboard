@@ -833,6 +833,124 @@ footer span { color: var(--pink); }
 
 /* hide cards based on filter */
 .islander-card.hidden { display: none; }
+
+/* ===== CURRENT COUPLES ===== */
+.couples-section { padding: 0 2rem 64px; max-width: 1200px; margin: 0 auto; }
+.couples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.couple-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  border-top: 2px solid transparent;
+  position: relative;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.couple-card:hover { transform: translateY(-2px); }
+.couple-odds {
+  position: absolute;
+  top: 12px; right: 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+}
+.couple-emoji { font-size: 24px; margin-bottom: 10px; display: block; }
+.couple-names { font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 5px; }
+.cx { color: var(--muted); font-weight: 400; margin: 0 2px; }
+.couple-note {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+.section-cta-wrap { display: flex; justify-content: center; margin-top: 8px; }
+.section-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--white);
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+.section-cta-btn:hover { border-color: var(--pink); color: var(--pink); transform: translateY(-1px); }
+
+/* ===== DASHBOARD HUB ===== */
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+}
+.hub-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 20px 18px;
+  text-decoration: none;
+  color: var(--white);
+  display: block;
+  transition: all 0.2s;
+}
+.hub-card:hover { background: var(--bg4); border-color: var(--pink); transform: translateY(-2px); }
+.hub-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+.hub-title { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+.hub-stat {
+  font-family: 'Space Mono', monospace;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hub-sub { font-size: 12px; color: var(--muted); line-height: 1.4; margin-bottom: 14px; }
+.hub-cta { font-size: 12px; color: var(--pink); font-weight: 600; }
+
+/* ===== COUPLING STATS ROW ===== */
+.coupling-stats {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.cs-item {
+  flex: 1;
+  min-width: 110px;
+  text-align: center;
+  padding: 16px 12px;
+  border-right: 1px solid var(--border);
+}
+.cs-item:last-child { border-right: none; }
+.cs-num {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.cs-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-family: 'Space Mono', monospace; }
+
+@media (max-width: 640px) {
+  .hub-grid { grid-template-columns: 1fr 1fr; }
+  .couples-grid { grid-template-columns: 1fr 1fr; }
+  .cs-item { min-width: 90px; padding: 12px 8px; }
+  .cs-num { font-size: 16px; }
+}
 </style>
 </head>
 <body>
@@ -841,12 +959,12 @@ footer span { color: var(--pink); }
 <nav>
   <a href="#" class="nav-logo">LIUSA <span>S8</span> ☀️</a>
   <ul class="nav-links">
-    <li><a href="#islanders">Islanders</a></li>
-    <li><a href="#timeline">Timeline</a></li>
-    <li><a href="#social">Social</a></li>
-    <li><a href="#sentiment">Tea ☕</a></li>
-    <li><a href="#drama">Drama</a></li>
-    <li><a href="#odds">Odds</a></li>
+    <li><a href="#couples">💑 Couples</a></li>
+    <li><a href="#islanders">🏝️ Cast</a></li>
+    <li><a href="#social">📱 Social</a></li>
+    <li><a href="#drama">🔥 Drama</a></li>
+    <li><a href="#sentiment">☕ Tea</a></li>
+    <li><a href="#odds">🎯 Odds</a></li>
   </ul>
 </nav>
 
@@ -854,7 +972,7 @@ footer span { color: var(--pink); }
 <div class="hero">
   <p class="hero-eyebrow">Season 8 · Fiji · 2026 · Fan Dashboard</p>
   <h1>Love Island <span class="usa">USA</span><br><span class="s8">Season Eight</span></h1>
-  <p class="hero-sub">All the data, drama, and digital chaos from the villa — updated through Episode 7.</p>
+  <p class="hero-sub">All the data, drama, and digital chaos from the villa — through Ep. 7 · Peacock Thu–Tue · Aftersun w/ Ciara Miller &amp; Tefi Pessoa · Finale projected <span style="color:var(--yellow)">July 12</span></p>
   <div class="hero-stats">
     <div class="hero-stat">
       <span class="num mono" style="color:var(--pink)" data-target="824" data-suffix="M">0</span>
@@ -879,10 +997,74 @@ footer span { color: var(--pink); }
   </div>
 </div>
 
+<!-- CURRENT COUPLES -->
+<section id="couples" class="couples-section">
+  <div class="section-header">
+    <h2>💑 Current Couples</h2>
+    <span class="section-tag">episode 7 · 7 active pairs + 1 solo</span>
+  </div>
+  <div class="couples-grid" id="couplesGrid"></div>
+  <div class="section-cta-wrap">
+    <a href="#timeline" class="section-cta-btn">📅 Full Coupling History &amp; Stats →</a>
+  </div>
+</section>
+
+<!-- DASHBOARD HUB -->
+<section id="hub">
+  <div class="section-header">
+    <h2>📊 Explore the Data</h2>
+    <span class="section-tag">deep dive into every corner of the villa</span>
+  </div>
+  <div class="hub-grid">
+    <a href="#islanders" class="hub-card">
+      <span class="hub-icon">🏝️</span>
+      <div class="hub-title">The Cast</div>
+      <div class="hub-stat" style="color:var(--cyan)">16</div>
+      <div class="hub-sub">islanders · 14 active · 1 dumped · 1 DQ</div>
+      <div class="hub-cta">Full profiles &amp; stats →</div>
+    </a>
+    <a href="#social" class="hub-card">
+      <span class="hub-icon">📱</span>
+      <div class="hub-title">Social Buzz</div>
+      <div class="hub-stat" style="color:var(--yellow)">+76k</div>
+      <div class="hub-sub">Kenzie's week-1 IG gain — series leader</div>
+      <div class="hub-cta">All Instagram growth →</div>
+    </a>
+    <a href="#drama" class="hub-card">
+      <span class="hub-icon">🔥</span>
+      <div class="hub-title">Drama Central</div>
+      <div class="hub-stat" style="color:var(--pink)">8</div>
+      <div class="hub-sub">active triangles &amp; villa rivalries</div>
+      <div class="hub-cta">Who's tangled with who →</div>
+    </a>
+    <a href="#sentiment" class="hub-card">
+      <span class="hub-icon">☕</span>
+      <div class="hub-title">Fan Tea</div>
+      <div class="hub-stat" style="color:var(--green)">5</div>
+      <div class="hub-sub">protected queens &amp; kings · 6 being dragged</div>
+      <div class="hub-cta">Loves vs cancels →</div>
+    </a>
+    <a href="#odds" class="hub-card">
+      <span class="hub-icon">🎯</span>
+      <div class="hub-title">Winning Odds</div>
+      <div class="hub-stat" style="color:var(--cyan)">31%</div>
+      <div class="hub-sub">Aniya &amp; KC lead Kalshi prediction market</div>
+      <div class="hub-cta">Full odds breakdown →</div>
+    </a>
+    <a href="#viewership" class="hub-card">
+      <span class="hub-icon">📺</span>
+      <div class="hub-title">By The Numbers</div>
+      <div class="hub-stat" style="color:var(--orange)">824M</div>
+      <div class="hub-sub">minutes streamed · first 3 days on Peacock</div>
+      <div class="hub-cta">All platform stats →</div>
+    </a>
+  </div>
+</section>
+
 <!-- ISLANDERS -->
 <section id="islanders">
   <div class="section-header">
-    <h2>The Islanders</h2>
+    <h2>🏝️ The Islanders</h2>
     <span class="section-tag">click a card for full profile</span>
   </div>
   <div class="filter-bar">
@@ -900,8 +1082,15 @@ footer span { color: var(--pink); }
 <!-- TIMELINE -->
 <section id="timeline">
   <div class="section-header">
-    <h2>Coupling History</h2>
+    <h2>📅 Coupling History</h2>
     <span class="section-tag">tap an episode to expand</span>
+  </div>
+  <div class="coupling-stats">
+    <div class="cs-item"><span class="cs-num" style="color:var(--pink)">7</span><span class="cs-label">Active Couples</span></div>
+    <div class="cs-item"><span class="cs-num" style="color:var(--yellow)">3</span><span class="cs-label">Recouple Ceremonies</span></div>
+    <div class="cs-item"><span class="cs-num" style="color:var(--cyan)">5</span><span class="cs-label">Bombshell Entries</span></div>
+    <div class="cs-item"><span class="cs-num" style="color:var(--orange)">1</span><span class="cs-label">Islanders Dumped</span></div>
+    <div class="cs-item"><span class="cs-num" style="color:var(--green)">Day 6</span><span class="cs-label">First Dump</span></div>
   </div>
   <div class="timeline" id="timelineEl"></div>
 </section>
@@ -909,7 +1098,7 @@ footer span { color: var(--pink); }
 <!-- SOCIAL CHART -->
 <section id="social">
   <div class="section-header">
-    <h2>Instagram Growth</h2>
+    <h2>📱 Instagram Growth</h2>
     <span class="section-tag">first week of season</span>
   </div>
   <div class="chart-container">
@@ -943,7 +1132,7 @@ footer span { color: var(--pink); }
 <!-- DRAMA -->
 <section id="drama">
   <div class="section-header">
-    <h2>Drama Triangles & Villa Dynamics</h2>
+    <h2>🔥 Drama Triangles & Villa Dynamics</h2>
     <span class="section-tag">who's tangled with who</span>
   </div>
   <div class="drama-grid" id="dramaGrid"></div>
@@ -952,7 +1141,7 @@ footer span { color: var(--pink); }
 <!-- CHALLENGES -->
 <section id="challenges">
   <div class="section-header">
-    <h2>Challenges</h2>
+    <h2>🎮 Challenges</h2>
     <span class="section-tag">production chaos</span>
   </div>
   <div class="challenges-grid" id="challengesGrid"></div>
@@ -961,7 +1150,7 @@ footer span { color: var(--pink); }
 <!-- ODDS -->
 <section id="odds">
   <div class="section-header">
-    <h2>Kalshi Winning Odds</h2>
+    <h2>🎯 Kalshi Winning Odds</h2>
     <span class="section-tag">prediction market as of week 2</span>
   </div>
   <div class="viewership-grid" style="margin-bottom:32px">
@@ -976,7 +1165,7 @@ footer span { color: var(--pink); }
 <!-- VIEWERSHIP -->
 <section id="viewership">
   <div class="section-header">
-    <h2>Viewership &amp; Platform Stats</h2>
+    <h2>📺 Viewership &amp; Platform Stats</h2>
     <span class="section-tag">peacock streaming records</span>
   </div>
   <div class="viewership-grid">
@@ -1166,7 +1355,7 @@ const ISLANDERS = [
     job: "Bikini Store Manager", entry: 1, exit: null, status: "active",
     type: "og", accent: "pink",
     couple: "Sincere Rhea", kalshi: "Bottom tier",
-    igHandle: "@melanieelisa", igPre: 10000, igNow: 60000,
+    igHandle: "@melanieelisa", igPre: 10000, igNow: 70000,
     dramaScore: 10,
     controversies: ["'Give me 10' meltdown — refused to sit on couch, screamed at Aniya who was trying to comfort her","Performatively forgot Kayda's name for DAYS (called her 'Katie', 'Koda', 'coyote') then used her real name to target her in a challenge","Violated girl code by pulling Corbin first, ignoring vulnerable single Kenzie","Kissed both Sincere and Corbin in a blindfolded challenge then lied to both saying she 'couldn't tell them apart'","On Reddit: 'toxic pick-me energy'. On TikTok: beloved entertainer. Two completely different receptions."],
     platforms: ["reddit", "twitter"],
@@ -1201,7 +1390,7 @@ const ISLANDERS = [
     highlight: "Kissed Sol twice, admitted to once. Melanie felt the emotional withdrawal before he said a word. Their partnership is the most volatile in the villa."
   },
   {
-    id: 14, name: "Sol Dean", age: 24, hometown: "Orange County, CA",
+    id: 14, name: "Sol Mýa Dean", age: 24, hometown: "Orange County, CA",
     job: "Model & Waitress", entry: 7, exit: null, status: "active",
     type: "bombshell", accent: "green",
     couple: "Sincere Rhea", kalshi: "7%",
@@ -1327,7 +1516,7 @@ const TIMELINE_DATA = [
 
 const SOCIAL_DATA = [
   { name: "Kenzie Annis", pre: 14000, now: 90000, pct: 1250, growth: 76000, color: "var(--yellow)" },
-  { name: "Melanie Moreno", pre: 10000, now: 60000, pct: 600, growth: 50000, color: "var(--pink)" },
+  { name: "Melanie Moreno", pre: 10000, now: 70000, pct: 600, growth: 60000, color: "var(--pink)" },
   { name: "Trinity Tatum", pre: 2250, now: 47250, pct: 2000, growth: 45000, color: "var(--green)" },
   { name: "Sincere Rhea", pre: 15000, now: 61000, pct: 307, growth: 46000, color: "var(--orange)" },
   { name: "Aniya Harvey", pre: 25000, now: 91000, pct: 264, growth: 66000, color: "var(--cyan)" },
@@ -1337,9 +1526,9 @@ const SOCIAL_DATA = [
   { name: "KC Chandler", pre: 4000, now: 15000, pct: 275, growth: 11000, color: "var(--cyan)" },
   { name: "Corbin Mims", pre: 8000, now: 25000, pct: 213, growth: 17000, color: "var(--orange)" },
   { name: "Beatriz Hatz", pre: 15000, now: 35000, pct: 133, growth: 20000, color: "var(--pink)" },
-  { name: "Sean Reifel", pre: 1000, now: 28000, pct: 2700, growth: 27000, color: "var(--orange)" },
+  { name: "Sean Reifel", pre: 1000, now: 28000, pct: 2700, growth: 27000, color: "var(--orange)", dumped: true },
   { name: "Bryce Dettloff", pre: 135000, now: 140000, pct: 3.7, growth: 5000, color: "var(--purple)" },
-  { name: "Sol Dean", pre: 11000, now: 16000, pct: 45, growth: 5000, color: "var(--green)" },
+  { name: "Sol Mýa Dean", pre: 11000, now: 16000, pct: 45, growth: 5000, color: "var(--green)" },
   { name: "Jen Terry", pre: 12000, now: 18000, pct: 50, growth: 6000, color: "var(--yellow)" },
   { name: "Caleb McDaniel", pre: 5000, now: 12000, pct: 140, growth: 7000, color: "var(--yellow)" }
 ];
@@ -1362,9 +1551,9 @@ const SENTIMENT_DISLIKED = [
 ];
 
 const DRAMA_DATA = [
-  { title: "Sincere — Melanie — Sol", intensity: "high", names: ["Sincere", "Melanie", "Sol Dean"], desc: "The season's central love triangle. Sincere chose Melanie but kissed Sol twice on Day 7, admitted to once. Melanie sensed his emotional withdrawal before he said a word. Their partnership is barely holding together." },
+  { title: "Sincere — Melanie — Sol", intensity: "high", names: ["Sincere", "Melanie", "Sol Mýa Dean"], desc: "The season's central love triangle. Sincere chose Melanie but kissed Sol twice on Day 7, admitted to once. Melanie sensed his emotional withdrawal before he said a word. Their partnership is barely holding together." },
   { title: "Kenzie — Corbin — Caleb", intensity: "high", names: ["Kenzie", "Corbin", "Caleb"], desc: "Kenzie was rescued from her failing Corbin pairing by Caleb's arrival. Fans are voting hard to make her and Caleb official. Kenzie already called Corbin a 'fuck boy' to his face before Caleb even walked in." },
-  { title: "Gabriel — Beatriz — Sol", intensity: "med", names: ["Gabriel", "Beatriz", "Sol Dean"], desc: "Gabriel kissed Sol on the Soul Ties terrace while coupled with Beatriz. Sol rejected him ('not it, girl'). Gabriel then pursued Jen Terry. Beatriz's position is increasingly uncertain." },
+  { title: "Gabriel — Beatriz — Sol", intensity: "med", names: ["Gabriel", "Beatriz", "Sol Mýa Dean"], desc: "Gabriel kissed Sol on the Soul Ties terrace while coupled with Beatriz. Sol rejected him ('not it, girl'). Gabriel then pursued Jen Terry. Beatriz's position is increasingly uncertain." },
   { title: "Zach — Kayda — Jen", intensity: "high", names: ["Zach", "Kayda", "Jen Terry"], desc: "Less than 24 hours after discussing exclusivity with Kayda, Zach told her he no longer wanted to be closed off — then immediately bonded with Jen Terry over Taylor Swift and One Direction." },
   { title: "Melanie vs Beatriz", intensity: "high", names: ["Melanie", "Beatriz"], desc: "'I told you this so you could correct your behaviour.' Beatriz called out Melanie's Corbin approach and girl code violation. Melanie fled sobbing. Internet declared Beatriz the winner unanimously." },
   { title: "Bryce — Trinity — Jen", intensity: "low", names: ["Bryce", "Trinity", "Jen Terry"], desc: "Bryce whispered 'I know the blonde' when Jen Terry walked in (they're modelling colleagues from LA). Trinity is aware. Bryce has maintained focus on Trinity despite the complicated pre-existing connection." },
@@ -1387,6 +1576,17 @@ const ODDS_DATA = [
   { rank: "05", couple: "Trinity Tatum & Bryce Dettloff", pct: 4, color: "var(--purple)", note: "Popular individually, chemistry questioned. Jen Terry pre-existing connection adds tension." },
   { rank: "06", couple: "Melanie Moreno & Corbin Mims", pct: 0, color: "var(--muted)", note: "Bottom tier / vulnerable. Voters actively trying to make them single to secure eviction." },
   { rank: "07", couple: "Beatriz Hatz & Gabriel Vasconcelos", pct: 0, color: "var(--muted)", note: "Bottom tier. Beatriz has huge individual support but Gabriel's pursuits of Sol and Jen weaken them." }
+];
+
+const COUPLES_NOW = [
+  { p1: "Aniya", p2: "KC", emoji: "🏆", odds: "31%", note: "OG Day 1 · Kalshi frontrunners", borderColor: "var(--cyan)", oddsColor: "var(--cyan)" },
+  { p1: "Kayda", p2: "Zach", emoji: "🌊", odds: "12%", note: "Day 2 steal · at risk", borderColor: "var(--pink)", oddsColor: "var(--pink)" },
+  { p1: "Kenzie", p2: "Caleb", emoji: "✨", odds: "8%", note: "Day 7 rescue arc", borderColor: "var(--yellow)", oddsColor: "var(--yellow)" },
+  { p1: "Sol", p2: "Sincere", emoji: "⚡", odds: "7%", note: "Day 7 bombshell chaos", borderColor: "var(--green)", oddsColor: "var(--green)" },
+  { p1: "Trinity", p2: "Bryce", emoji: "🌴", odds: "4%", note: "OG Day 1 · Jen complication", borderColor: "var(--purple)", oddsColor: "var(--purple)" },
+  { p1: "Melanie", p2: "Corbin", emoji: "💣", odds: "—", note: "Volatile · bottom odds", borderColor: "var(--orange)", oddsColor: "var(--muted)" },
+  { p1: "Beatriz", p2: "Gabriel", emoji: "⚠️", odds: "—", note: "Shaky · Gabriel straying", borderColor: "var(--purple)", oddsColor: "var(--muted)" },
+  { p1: "Jen Terry", p2: null, emoji: "💫", odds: "TBD", note: "New bombshell · flying solo", borderColor: "var(--yellow)", oddsColor: "var(--yellow)" },
 ];
 
 let currentChartMode = 'current';
@@ -1428,6 +1628,18 @@ function renderIslanders(filter = 'all', sort = null) {
       ${growth ? `<div class="card-ig-growth mono">${growth} IG</div>` : ''}
     </div>`;
   }).join('');
+}
+
+// ===================== RENDER CURRENT COUPLES =====================
+function renderCurrentCouples() {
+  document.getElementById('couplesGrid').innerHTML = COUPLES_NOW.map(c => `
+    <div class="couple-card" style="border-top-color:${c.borderColor}">
+      <div class="couple-odds" style="color:${c.oddsColor}">${c.odds}</div>
+      <span class="couple-emoji">${c.emoji}</span>
+      <div class="couple-names">${c.p1}${c.p2 ? `<span class="cx"> × </span>${c.p2}` : ''}</div>
+      <div class="couple-note">${c.note}</div>
+    </div>
+  `).join('');
 }
 
 // ===================== RENDER TIMELINE =====================
@@ -1477,7 +1689,7 @@ function renderBarChart(mode) {
     const pct = (val / max) * 100;
     const display = mode === 'pct' ? `${val}%` : `${(val/1000).toFixed(0)}k`;
     return `<div class="bar-row">
-      <div class="bar-name">${d.name.split(' ')[0]}</div>
+      <div class="bar-name">${d.name.split(' ')[0]}${d.dumped ? ' 💀' : ''}</div>
       <div class="bar-track">
         <div class="bar-fill" style="width:0%;background:${d.color}" data-target="${pct}">
           <span class="bar-fill-val">${display}</span>
@@ -1696,6 +1908,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // ===================== INIT =====================
 document.addEventListener('DOMContentLoaded', () => {
+  renderCurrentCouples();
   renderIslanders();
   renderTimeline();
   renderBarChart('current');
