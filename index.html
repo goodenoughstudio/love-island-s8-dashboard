@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Island USA S8 2026 — Fan Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #161616;
+  --bg4: #1c1c1c;
+  --pink: #FF3CAC;
+  --yellow: #F9F002;
+  --cyan: #00F5FF;
+  --orange: #FF6B35;
+  --green: #39FF14;
+  --purple: #BF5AF2;
+  --white: #f0f0f0;
+  --muted: #666;
+  --border: #222;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.mono { font-family: 'Space Mono', monospace; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 3px; }
+
+/* ===== NAV ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-logo {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  color: var(--pink);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--yellow); }
+.nav-links {
+  display: flex;
+  gap: 0;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0 14px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover { color: var(--white); border-bottom-color: var(--pink); }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  padding: 80px 2rem 60px;
+  text-align: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(255,60,172,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-size: clamp(36px, 7vw, 80px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.hero h1 .s8 { color: var(--yellow); }
+.hero h1 .usa { color: var(--pink); }
+.hero-sub {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 480px;
+  margin: 0 auto 48px;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat .num {
+  font-family: 'Space Mono', monospace;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  display: block;
+}
+.hero-stat .label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 64px 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+.section-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.section-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ===== ISLANDER CARDS ===== */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.filter-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #000;
+}
+.islanders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+.islander-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.islander-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.islander-card[data-accent="pink"]::before { background: var(--pink); }
+.islander-card[data-accent="yellow"]::before { background: var(--yellow); }
+.islander-card[data-accent="cyan"]::before { background: var(--cyan); }
+.islander-card[data-accent="orange"]::before { background: var(--orange); }
+.islander-card[data-accent="green"]::before { background: var(--green); }
+.islander-card[data-accent="purple"]::before { background: var(--purple); }
+.islander-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--pink);
+  background: var(--bg4);
+}
+.card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.status-dot.active { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.status-dot.dumped { background: var(--orange); }
+.status-dot.dq { background: var(--muted); }
+.card-name {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+.card-age-loc {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.card-job {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.card-couple {
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.card-drama {
+  margin-top: 10px;
+}
+.drama-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 4px;
+  font-family: 'Space Mono', monospace;
+}
+.drama-bar {
+  height: 3px;
+  background: var(--bg4);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.drama-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1s ease;
+}
+.card-ig-growth {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--green);
+  margin-top: 8px;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 200;
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 640px;
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+}
+.modal-header {
+  padding: 28px 28px 0;
+  position: relative;
+}
+.modal-accent-bar {
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  margin: -1px -1px 0;
+  border-radius: 16px 16px 0 0;
+}
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.modal-close:hover { color: var(--white); border-color: var(--pink); }
+.modal-name {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 16px;
+  line-height: 1.1;
+}
+.modal-meta {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 4px 0 20px;
+}
+.modal-body {
+  padding: 20px 28px 28px;
+}
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.modal-stat-box {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+}
+.modal-stat-box .msb-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+  margin-bottom: 4px;
+}
+.modal-stat-box .msb-val {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Space Mono', monospace;
+}
+.modal-section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+  margin: 20px 0 10px;
+}
+.modal-controversies { display: flex; flex-direction: column; gap: 8px; }
+.controversy-item {
+  background: rgba(255,60,172,0.06);
+  border: 1px solid rgba(255,60,172,0.15);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-family: 'Space Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 100px;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+.platform-badge.reddit { background: rgba(255,107,53,0.2); color: var(--orange); }
+.platform-badge.twitter { background: rgba(0,245,255,0.15); color: var(--cyan); }
+.platform-badge.tiktok { background: rgba(191,90,242,0.2); color: var(--purple); }
+.kalshi-odds {
+  font-family: 'Space Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+}
+.couple-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 12px 5px 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.couple-heart { color: var(--pink); }
+
+/* ===== TIMELINE ===== */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-episode {
+  border-left: 2px solid var(--border);
+  padding-left: 24px;
+  padding-bottom: 32px;
+  position: relative;
+  cursor: pointer;
+}
+.timeline-episode:last-child { border-left-color: transparent; }
+.timeline-dot {
+  position: absolute;
+  left: -7px;
+  top: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+}
+.episode-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0;
+}
+.episode-day {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.episode-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+.episode-toggle {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+}
+.episode-body {
+  display: none;
+  padding-top: 14px;
+}
+.episode-body.open { display: block; }
+.coupling-changes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+.coupling-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+}
+.coupling-item .arrow { color: var(--pink); font-weight: 700; }
+.coupling-item.dumped { border-color: rgba(255,107,53,0.3); }
+.coupling-item.dumped .arrow { color: var(--orange); }
+.coupling-item.steal { border-color: rgba(0,245,255,0.2); }
+.coupling-item.steal .arrow { color: var(--cyan); }
+.coupling-item.bombshell { border-color: rgba(249,240,2,0.2); }
+.coupling-item.bombshell .arrow { color: var(--yellow); }
+
+/* ===== SOCIAL CHART ===== */
+.chart-container {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  overflow-x: auto;
+}
+.chart-toggle {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.chart-toggle button {
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.chart-toggle button.active {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: #000;
+}
+.bar-chart {
+  min-width: 700px;
+}
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  cursor: default;
+  position: relative;
+}
+.bar-name {
+  font-size: 12px;
+  font-weight: 600;
+  width: 120px;
+  flex-shrink: 0;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bar-track {
+  flex: 1;
+  height: 28px;
+  background: var(--bg4);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+}
+.bar-fill-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: #000;
+  white-space: nowrap;
+}
+.bar-tooltip {
+  position: absolute;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 10;
+  white-space: nowrap;
+  right: 0;
+  top: -50px;
+}
+.bar-row:hover .bar-tooltip { opacity: 1; }
+
+/* ===== SENTIMENT ===== */
+.sentiment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.sentiment-col h3 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sentiment-col h3 .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  display: inline-block;
+}
+.sentiment-list { display: flex; flex-direction: column; gap: 8px; }
+.sentiment-item {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.sentiment-item-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.sentiment-item-reason {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.sentiment-item-platforms {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+/* ===== DRAMA TRIANGLES / RELATIONSHIP WEB ===== */
+.drama-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.drama-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.drama-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.drama-intensity {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.drama-intensity.high { background: rgba(255,60,172,0.2); color: var(--pink); }
+.drama-intensity.med { background: rgba(249,240,2,0.15); color: var(--yellow); }
+.drama-intensity.low { background: rgba(57,255,20,0.15); color: var(--green); }
+.drama-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.names-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+.name-chip {
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+}
+.triangle-arrow {
+  color: var(--pink);
+  font-size: 14px;
+}
+
+/* ===== CHALLENGES ===== */
+.challenges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+.challenge-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  border-top: 2px solid transparent;
+}
+.challenge-day {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.challenge-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.challenge-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ===== VIEWERSHIP ===== */
+.viewership-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.view-stat {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+.view-stat .num {
+  font-family: 'Space Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.view-stat .label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* ===== KALSHI ODDS ===== */
+.odds-list { display: flex; flex-direction: column; gap: 8px; }
+.odds-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+.odds-rank {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  width: 24px;
+  flex-shrink: 0;
+}
+.odds-names { flex: 1; font-size: 14px; font-weight: 600; }
+.odds-pct {
+  font-family: 'Space Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+}
+.odds-bar-wrap {
+  width: 100px;
+  height: 4px;
+  background: var(--bg4);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.odds-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 1.2s ease;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-family: 'Space Mono', monospace;
+}
+footer span { color: var(--pink); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 6px var(--green); }
+  50% { box-shadow: 0 0 14px var(--green); }
+}
+.status-dot.active { animation: pulse-glow 2s ease infinite; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .sentiment-grid { grid-template-columns: 1fr; }
+  .modal-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hero-stats { gap: 28px; }
+  .bar-chart { min-width: 480px; }
+}
+
+/* hide cards based on filter */
+.islander-card.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">LIUSA <span>S8</span> ☀️</a>
+  <ul class="nav-links">
+    <li><a href="#islanders">Islanders</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#social">Social</a></li>
+    <li><a href="#sentiment">Tea ☕</a></li>
+    <li><a href="#drama">Drama</a></li>
+    <li><a href="#odds">Odds</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Season 8 · Fiji · 2026 · Fan Dashboard</p>
+  <h1>Love Island <span class="usa">USA</span><br><span class="s8">Season Eight</span></h1>
+  <p class="hero-sub">All the data, drama, and digital chaos from the villa — updated through Episode 7.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num mono" style="color:var(--pink)" data-target="824" data-suffix="M">0</span>
+      <span class="label">mins viewed (3 days)</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num mono" style="color:var(--yellow)" data-target="74" data-suffix="%">0</span>
+      <span class="label">growth vs S7</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num mono" style="color:var(--cyan)" data-target="43" data-suffix="M">0</span>
+      <span class="label">video views day 1</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num mono" style="color:var(--green)" data-target="15" data-suffix="">0</span>
+      <span class="label">islanders entered</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num mono" style="color:var(--orange)" data-target="7" data-suffix="">0</span>
+      <span class="label">episodes aired</span>
+    </div>
+  </div>
+</div>
+
+<!-- ISLANDERS -->
+<section id="islanders">
+  <div class="section-header">
+    <h2>The Islanders</h2>
+    <span class="section-tag">click a card for full profile</span>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="active">🟢 Active</button>
+    <button class="filter-btn" data-filter="dumped">🔴 Dumped</button>
+    <button class="filter-btn" data-filter="og">OG Cast</button>
+    <button class="filter-btn" data-filter="bombshell">Bombshell</button>
+    <button class="filter-btn" data-filter="sort-growth">⬆ Sort: IG Growth</button>
+    <button class="filter-btn" data-filter="sort-drama">🔥 Sort: Drama</button>
+  </div>
+  <div class="islanders-grid" id="islandersGrid"></div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-header">
+    <h2>Coupling History</h2>
+    <span class="section-tag">tap an episode to expand</span>
+  </div>
+  <div class="timeline" id="timelineEl"></div>
+</section>
+
+<!-- SOCIAL CHART -->
+<section id="social">
+  <div class="section-header">
+    <h2>Instagram Growth</h2>
+    <span class="section-tag">first week of season</span>
+  </div>
+  <div class="chart-container">
+    <div class="chart-toggle">
+      <button class="active" onclick="switchChart('current')">Current Followers</button>
+      <button onclick="switchChart('growth')">Absolute Growth</button>
+      <button onclick="switchChart('pct')">% Growth</button>
+    </div>
+    <div class="bar-chart" id="barChartEl"></div>
+  </div>
+</section>
+
+<!-- SENTIMENT -->
+<section id="sentiment">
+  <div class="section-header">
+    <h2>Fan Sentiment ☕</h2>
+    <span class="section-tag">internet loves vs internet cancels</span>
+  </div>
+  <div class="sentiment-grid">
+    <div class="sentiment-col">
+      <h3><span class="dot" style="background:var(--green)"></span> Protected Queens & Kings</h3>
+      <div class="sentiment-list" id="lovedList"></div>
+    </div>
+    <div class="sentiment-col">
+      <h3><span class="dot" style="background:var(--pink)"></span> Main Characters (Not In a Good Way)</h3>
+      <div class="sentiment-list" id="dislikedList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DRAMA -->
+<section id="drama">
+  <div class="section-header">
+    <h2>Drama Triangles & Villa Dynamics</h2>
+    <span class="section-tag">who's tangled with who</span>
+  </div>
+  <div class="drama-grid" id="dramaGrid"></div>
+</section>
+
+<!-- CHALLENGES -->
+<section id="challenges">
+  <div class="section-header">
+    <h2>Challenges</h2>
+    <span class="section-tag">production chaos</span>
+  </div>
+  <div class="challenges-grid" id="challengesGrid"></div>
+</section>
+
+<!-- ODDS -->
+<section id="odds">
+  <div class="section-header">
+    <h2>Kalshi Winning Odds</h2>
+    <span class="section-tag">prediction market as of week 2</span>
+  </div>
+  <div class="viewership-grid" style="margin-bottom:32px">
+    <div class="view-stat"><div class="num" style="color:var(--pink)" data-target="31" data-suffix="%">0</div><div class="label">Aniya &amp; KC — top odds</div></div>
+    <div class="view-stat"><div class="num" style="color:var(--yellow)" data-target="12" data-suffix="%">0</div><div class="label">Kayda &amp; Zach</div></div>
+    <div class="view-stat"><div class="num" style="color:var(--cyan)" data-target="8" data-suffix="%">0</div><div class="label">Kenzie &amp; Caleb</div></div>
+    <div class="view-stat"><div class="num" style="color:var(--green)" data-target="7" data-suffix="%">0</div><div class="label">Sol &amp; Sincere</div></div>
+  </div>
+  <div class="odds-list" id="oddsList"></div>
+</section>
+
+<!-- VIEWERSHIP -->
+<section id="viewership">
+  <div class="section-header">
+    <h2>Viewership &amp; Platform Stats</h2>
+    <span class="section-tag">peacock streaming records</span>
+  </div>
+  <div class="viewership-grid">
+    <div class="view-stat">
+      <div class="num" style="color:var(--pink)" data-target="824" data-suffix="M">0</div>
+      <div class="label">Minutes viewed — first 3 days</div>
+    </div>
+    <div class="view-stat">
+      <div class="num" style="color:var(--yellow)" data-target="74" data-suffix="%">0</div>
+      <div class="label">Increase vs Season 7</div>
+    </div>
+    <div class="view-stat">
+      <div class="num" style="color:var(--cyan)" data-target="43" data-suffix="M">0</div>
+      <div class="label">Video views on premiere day</div>
+    </div>
+    <div class="view-stat">
+      <div class="num" style="color:var(--orange)" data-target="23" data-suffix="%">0</div>
+      <div class="label">Mobile screen share</div>
+    </div>
+    <div class="view-stat">
+      <div class="num" style="color:var(--green)" data-target="13" data-suffix=".5 hrs">0</div>
+      <div class="label">App crash voting extension</div>
+    </div>
+    <div class="view-stat">
+      <div class="num" style="color:var(--purple)" data-target="1" data-suffix="">0</div>
+      <div class="label">#1 most social program — premiere day</div>
+    </div>
+  </div>
+  <div style="background:var(--bg3);border:1px solid rgba(255,107,53,0.3);border-radius:10px;padding:18px 20px;margin-top:8px;">
+    <div style="font-size:12px;font-family:'Space Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;">⚠️ App Crash — June 9, 2026</div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;">The first public vote (10:30 PM–1:30 AM ET) caused the Love Island app to crash globally at ~9 PM ET as the episode aired. The unprecedented spike in voter registration and phone verification requests overwhelmed the database. Peacock extended the voting window by 13.5 hours, closing polls at 3 PM ET on June 10.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Made with drama and data ✦ <span>Love Island USA S8</span> ✦ Fiji 2026 ✦ Fan dashboard, not affiliated with Peacock
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalEl">
+    <div class="modal-accent-bar" id="modalAccentBar"></div>
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+      <div id="modalHeaderContent"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ===================== DATA =====================
+const ISLANDERS = [
+  {
+    id: 1, name: "Aniya Harvey", age: 23, hometown: "Tyrone, GA",
+    job: "Non-Profit Marketing Director", entry: 1, exit: null, status: "active",
+    type: "og", accent: "cyan",
+    couple: "KC Chandler", kalshi: "31%",
+    igHandle: "@aniyaharvey02", igPre: 25000, igNow: 91000,
+    dramaScore: 4,
+    controversies: ["Minor criticism for comforting Melanie after Melanie was rude to her — Reddit called it 'people pleasing'","Some fans question if she's forcing a connection with KC due to insecurity about being the only dark-skinned Black woman in the villa","Deeply protected by the online community — described as 'unproblematic queen'"],
+    platforms: ["reddit"],
+    viral: "Daughter of former NBA player Donnell Harvey; D1 volleyball at Florida Atlantic University",
+    bio: "Sweet, level-headed, and the villa's emotional anchor. Fans actively shield her online, though some critics accuse her of lacking a backbone. Her connection with KC is the current Kalshi frontrunner at 31%.",
+    highlight: "Called out by Sincere that Sol Dean looks like KC's ex — KC responded with reassurance and they had a terrace make-out session cheered by the villa."
+  },
+  {
+    id: 2, name: "Beatriz Hatz", age: 25, hometown: "San Diego, CA",
+    job: "Paralympic Track Athlete", entry: 1, exit: null, status: "active",
+    type: "og", accent: "pink",
+    couple: "Gabriel Vasconcelos", kalshi: "Bottom tier",
+    igHandle: "@bhatz_track", igPre: 15000, igNow: 35000,
+    dramaScore: 5,
+    controversies: ["Confronted Melanie over 'girl code' violation — told her to 'correct her behaviour'","Initially chose Sean but quickly shifted to Gabriel, leaving Sean blindsided","Sean felt she should have communicated her changing feelings before the fire pit"],
+    platforms: ["reddit", "tiktok"],
+    viral: "FIRST EVER Paralympian on Love Island USA — bronze medal long jump, 2024 Paris Games. Prosthetic leg, unbothered attitude.",
+    bio: "Historic contestant — first Paralympian in franchise history. Universally beloved for her direct communication, self-deprecating humor, and confidence. Her couple with Gabriel is vulnerable heading into the next episode.",
+    highlight: "Shut down Melanie's defensive spiral with 'I told you this so you could correct your behaviour.' Became a Reddit icon instantly."
+  },
+  {
+    id: 3, name: "Bryce Dettloff", age: 29, hometown: "Los Angeles, CA",
+    job: "DJ & Handyman", entry: 1, exit: null, status: "active",
+    type: "og", accent: "purple",
+    couple: "Trinity Tatum", kalshi: "4%",
+    igHandle: "@brycealakai", igPre: 135000, igNow: 140000,
+    dramaScore: 3,
+    controversies: ["Seven-year age gap with Trinity (he's 29, she's 22) raised eyebrows","On Day 7 whispered 'I know the blonde' when Jen Terry entered — she's a modelling colleague from LA","Initially skeptically received for the age gap — has since won the audience over"],
+    platforms: ["twitter"],
+    viral: "Compared to Matthew Gray Gubler AND Jacob Elordi on Twitter/X — both went viral simultaneously. Former Calvin Klein model, slowest IG growth of the cast (only 3.7% growth).",
+    bio: "The unexpected charmer. Started with audience skepticism due to the age gap but his 'tea sessions' with Trinity and sharing childhood bullying stories on the Soul Ties terrace won people over completely.",
+    highlight: "'I know the blonde' whisper when Jen Terry walked in — she's his LA modelling colleague. Villa speculation exploded."
+  },
+  {
+    id: 4, name: "Caleb McDaniel", age: 21, hometown: "Asheboro, NC",
+    job: "Elevator Mechanic", entry: 7, exit: null, status: "active",
+    type: "bombshell", accent: "yellow",
+    couple: "Kenzie Annis", kalshi: "8%",
+    igHandle: "@calebbmcdaniell", igPre: 5000, igNow: 12000,
+    dramaScore: 3,
+    controversies: ["Bypassed normal entry protocols to directly pursue Kenzie on Day 7","Off-screen friends with Jimmy Presnell from Love Is Blind"],
+    platforms: [],
+    viral: "Fan favourite from his first second — widely considered Kenzie's 'type' and the redemption arc she deserved after Corbin.",
+    bio: "The late-arrival hero. Walked into the slumber party as a bonus bombshell on Day 7, immediately kissed Kenzie, and the internet lost their minds. Fans are voting hard for Kenzie to 'trade up' to him.",
+    highlight: "Ariana Madix introduced him as a 'bonus bombshell' at the slumber party — he immediately went for Kenzie."
+  },
+  {
+    id: 5, name: "Corbin Mims", age: 22, hometown: "Miami, FL",
+    job: "Luxury Vacation Rental Entrepreneur", entry: 5, exit: null, status: "active",
+    type: "bombshell", accent: "orange",
+    couple: "Kenzie Annis", kalshi: "Bottom tier",
+    igHandle: "@corbiskii", igPre: 8000, igNow: 25000,
+    dramaScore: 8,
+    controversies: ["Pretended he'd never tried '69' to seem inexperienced — fans immediately clocked it as performance","Described a 'handcuff fantasy' and then a challenge with exactly that premise appeared minutes later — branded a 'production plant'","Used IDENTICAL compliments about 'your eyes' on both Kenzie AND Kayda","Branded a 'Miami omen' — only in the villa for physical pursuits, not real connections"],
+    platforms: ["reddit", "twitter"],
+    viral: "Entered on Day 5 during the Office Challenge — the female islanders secretly kissed him while the men sat in a slime pit not knowing he existed.",
+    bio: "Reddit's least favourite man in the villa. Co-founder of Caicos Exclusive luxury villa rental. His calculated, shallow demeanor has been systematically exposed by viewers. Kenzie already called him a 'fuck boy' to his face.",
+    highlight: "Sincere watched Corbin pull Melanie and said he went through 'the seven stages of grief in 25 minutes.'"
+  },
+  {
+    id: 6, name: "Gabriel Vasconcelos", age: 26, hometown: "Miami, FL",
+    job: "Model & DJ", entry: 2, exit: null, status: "active",
+    type: "bombshell", accent: "purple",
+    couple: "Beatriz Hatz", kalshi: "Bottom tier",
+    igHandle: "@gvasconcelosv", igPre: 20000, igNow: 42000,
+    dramaScore: 5,
+    controversies: ["Fan discovery that he follows Donald Trump on Instagram — alienated progressive fans on Twitter/X","Early episodes branded him 'soulless NPC' — his chats with Beatriz were labelled devoid of emotional depth","On Day 7 kissed Sol Dean on the Soul Ties terrace while coupled with Beatriz","Sol's response? 'My body's just like, that was not it, girl' — the rejection went viral"],
+    platforms: ["twitter", "reddit"],
+    viral: "Dubbed 'Reverse Leonardo DiCaprio' for his preference for older women. His Trump follow discovered day one of cast announcement.",
+    bio: "Started as Twitter's villain, ended up getting some audience redemption after opening up about how exhausting it is to express emotion in English, his third language. That moment resonated deeply with bilingual viewers.",
+    highlight: "Sol Dean physically recoiled from his kiss on the Soul Ties terrace and said 'my body's just like, that was NOT it, girl' in her confessional."
+  },
+  {
+    id: 7, name: "Jen Terry", age: 23, hometown: "Melbourne, FL",
+    job: "Model", entry: 7, exit: null, status: "active",
+    type: "bombshell", accent: "yellow",
+    couple: "Single / Zach Georgiou", kalshi: "TBD",
+    igHandle: "@jennifertterry", igPre: 12000, igNow: 18000,
+    dramaScore: 3,
+    controversies: ["Bryce Dettloff whispered 'I know the blonde' when she walked in — speculation about past romance","Actually LA modelling colleagues, not romantic history","Shares hometown connection with host Ariana Madix (both Melbourne, FL)"],
+    platforms: [],
+    viral: "The 'I know the blonde' whisper from Bryce sent Reddit into overdrive. Fans curious how her Ariana connection affects her edit.",
+    bio: "Day 7 bombshell and model. The most mysterious new arrival — her connections to both Bryce and Ariana Madix have generated quiet but sustained curiosity.",
+    highlight: "Bonded with Zach Georgiou over Taylor Swift and One Direction — same day he told Kayda he no longer wanted to be exclusive."
+  },
+  {
+    id: 8, name: "Kayda Bosse", age: 22, hometown: "Manchester, NH",
+    job: "Server", entry: 2, exit: null, status: "active",
+    type: "bombshell", accent: "pink",
+    couple: "Zach Georgiou", kalshi: "12%",
+    igHandle: "@kaydabosse", igPre: 6000, igNow: 22000,
+    dramaScore: 7,
+    controversies: ["Leaked high school video surfaced showing her punching a girl and launching a fatphobic tirade","Her mother defended her as acting in self-defence but TikTok remains unconvinced","Active cancel attempts on TikTok claim her villa confidence is a continuation of bullying behaviour","Melanie kept calling her 'Katie', 'Koda', and 'coyote' — Kayda's calm response made her a Reddit icon"],
+    platforms: ["tiktok"],
+    viral: "Entered villa on Day 2 and immediately stole Zach from Kenzie. The leaked high school fighting video changed her TikTok standing completely.",
+    bio: "Split reception: Reddit and Twitter love her confidence and 'baddie' energy. TikTok is actively trying to cancel her over the leaked past. Her couple with Zach is now in danger after he expressed interest in Jen Terry.",
+    highlight: "When Melanie kept forgetting her name, Kayda said 'get back' while targeting her in the challenge. Calm, cold, and iconic."
+  },
+  {
+    id: 9, name: "KC Chandler", age: 23, hometown: "Fresno, CA",
+    job: "Nursing Assistant", entry: 1, exit: null, status: "active",
+    type: "og", accent: "cyan",
+    couple: "Aniya Harvey", kalshi: "31%",
+    igHandle: "@KC.Thagreat", igPre: 4000, igNow: 15000,
+    dramaScore: 4,
+    controversies: ["Unverified TikTok (now deleted) from alleged ex claiming he hacked her phone and FaceTimed her while burning her belongings","Screenshots of 'charred items' shared in the video","KC is isolated in villa and unable to respond — significant Twitter/X divide about the allegations","Criticism for instigating Sean Reifel's confrontation with Beatriz"],
+    platforms: ["twitter"],
+    viral: "Referred to Aniya as 'the blueprint' and addressed the unique challenges of dark-skinned Black women in reality TV dating. Launched 'Kemet Runs Athletic Club'.",
+    bio: "On-screen: one of the most emotionally mature, articulate men in the villa. Off-screen: domestic abuse allegations from a deleted TikTok cast a shadow over his journey. Leading Kalshi odds at 31%.",
+    highlight: "When told Sol Dean looked like his ex, he explicitly said he would not jeopardize the genuine connection he'd built with Aniya for a fleeting interaction."
+  },
+  {
+    id: 10, name: "Kenzie Annis", age: 24, hometown: "Kennesaw, GA",
+    job: "Nursing School Graduate & Nanny", entry: 1, exit: null, status: "active",
+    type: "og", accent: "yellow",
+    couple: "Caleb McDaniel", kalshi: "8%",
+    igHandle: "@kenzie_annis", igPre: 14000, igNow: 90000,
+    dramaScore: 7,
+    controversies: ["Old photo circulated of her posing with people in MAGA hats — family issued a clarifying statement","Criticized for being 'clingy' and dragging out her rejection by Zach for multiple days","Compared to Elle Woods at start, now has very mixed reception","Kim Kardashian shared her SKIMS moment on Instagram story — viral"],
+    platforms: ["tiktok", "reddit"],
+    viral: "Kim Kardashian shared her SKIMS pajama villa moment — biggest celebrity endorsement of the season. Also her '69' confession to Corbin went viral. IG growth leader at +76k followers.",
+    bio: "The redemption arc queen. Graduated nursing school two weeks before entering the villa. Her journey from Zach's rejection → trapped with Corbin → saved by Caleb is the season's most-followed storyline.",
+    highlight: "Called Corbin a 'fuck boy' to his face. Then immediately kissed Caleb. The internet screamed."
+  },
+  {
+    id: 11, name: "Melanie Moreno", age: 24, hometown: "Los Angeles, CA",
+    job: "Bikini Store Manager", entry: 1, exit: null, status: "active",
+    type: "og", accent: "pink",
+    couple: "Sincere Rhea", kalshi: "Bottom tier",
+    igHandle: "@melanieelisa", igPre: 10000, igNow: 60000,
+    dramaScore: 10,
+    controversies: ["'Give me 10' meltdown — refused to sit on couch, screamed at Aniya who was trying to comfort her","Performatively forgot Kayda's name for DAYS (called her 'Katie', 'Koda', 'coyote') then used her real name to target her in a challenge","Violated girl code by pulling Corbin first, ignoring vulnerable single Kenzie","Kissed both Sincere and Corbin in a blindfolded challenge then lied to both saying she 'couldn't tell them apart'","On Reddit: 'toxic pick-me energy'. On TikTok: beloved entertainer. Two completely different receptions."],
+    platforms: ["reddit", "twitter"],
+    viral: "'Give me 10, give me FUCKING 10' — immediate meme. Her emotional dysregulation after Corbin arrived became the defining viral clip of Week 1.",
+    bio: "The season's biggest lightning rod. Dominican bikini store manager who generates maximum drama. Reddit despises her; TikTok loves her for keeping the villa chaotic. Her trust issues and abandonment fears were confessed in the first week.",
+    highlight: "Beatriz confronted her about Corbin. Melanie said 'relax.' Beatriz said 'I brought this to you so you could correct your behaviour.' Melanie fled sobbing saying 'give me 10.'"
+  },
+  {
+    id: 12, name: "Sean Reifel", age: 29, hometown: "Easton, PA",
+    job: "Police Officer", entry: 1, exit: 6, status: "dumped",
+    type: "og", accent: "orange",
+    couple: "Single", kalshi: "N/A",
+    igHandle: "@parm3_sean", igPre: 1000, igNow: 28000,
+    dramaScore: 4,
+    controversies: ["Resigned from Bethlehem Police Dept (sworn in Aug 2025) to join the show — Mayor Reynolds publicly condemned him","Mayor said 'never thought I'd see the day where reality TV wins over being a police officer'","Police Chief Michelle Kott said taxpayer-funded training resources were wasted during a staffing shortage","Despite local backlash, online community widely sympathized with him as a genuine person outmaneuvered by villa dynamics"],
+    platforms: ["twitter"],
+    viral: "Mayor J. William Reynolds of Bethlehem PA publicly roasted him. Percentage IG growth leader at 2,700% (1k → 28k followers) — despite being first dumped.",
+    bio: "First islander dumped (Day 6). Left for reasons entirely beyond his control — Beatriz shifted to Gabriel and he never found another connection. Genuinely nice guy who got the roughest start.",
+    highlight: "Bethlehem's mayor publicly called him out in the press. He still got more post-villa press than half the cast."
+  },
+  {
+    id: 13, name: "Sincere Rhea", age: 25, hometown: "Cape May, NJ",
+    job: "Track Athlete / Hurdler", entry: 1, exit: null, status: "active",
+    type: "og", accent: "orange",
+    couple: "Melanie Moreno", kalshi: "Bottom tier",
+    igHandle: "@sincere.rhea", igPre: 15000, igNow: 61000,
+    dramaScore: 8,
+    controversies: ["At a pool challenge, casually said that texting other people while in a relationship 'just happens' — viewers were appalled","Kissed Sol Dean TWICE on Day 7 but only admitted to one kiss when confronted by Melanie","Refers to Aniya as 'big dawg' and 'chest out, chin up' — Reddit says he subconsciously platonises her because he doesn't find her attractive","Comments about cheating normalization alienated viewers who knew about Melanie's documented trust issues"],
+    platforms: ["reddit", "twitter"],
+    viral: "'I went through the seven stages of grief in 25 minutes' when Melanie pulled Corbin. Elite quote. Elite.",
+    bio: "Former collegiate track and field athlete, University of Miami, 2023 NCAA Outdoor Championships qualifier. His 'cheating happens' comment and the Sol kiss deception have made him one of the season's most-criticized men.",
+    highlight: "Kissed Sol twice, admitted to once. Melanie felt the emotional withdrawal before he said a word. Their partnership is the most volatile in the villa."
+  },
+  {
+    id: 14, name: "Sol Dean", age: 24, hometown: "Orange County, CA",
+    job: "Model & Waitress", entry: 7, exit: null, status: "active",
+    type: "bombshell", accent: "green",
+    couple: "Sincere Rhea", kalshi: "7%",
+    igHandle: "@itssoll", igPre: 11000, igNow: 16000,
+    dramaScore: 6,
+    controversies: ["Kissed both Sincere (twice) and Gabriel within 24 hours of arriving","Physically recoiled from Gabriel's kiss: 'my body's just like, that was NOT it, girl'","Fans actively shipping 'Solach' (Sol + Zach) — direct threat to Kayda","Peacock photographers reportedly did her a 'massive disservice' — fans tracked down her modelling profile and were shocked"],
+    platforms: ["twitter"],
+    viral: "Went viral on Twitter/X and Instagram BEFORE entering the villa. Her pixie cut and modelling shots had fans losing it. Then the Gabriel kiss rejection quote became a gif.",
+    bio: "The Day 7 bombshell who immediately shook everything up. Kissed Sincere (his current partner is Melanie) and triggered a full villa restructuring. Her sensory rejection of Gabriel's kiss was one of the most memorable confessional moments of the season.",
+    highlight: "Left red paint on Sincere during the slumber party blindfolded challenge — revealing she'd kissed him — before Melanie put the pieces together."
+  },
+  {
+    id: 15, name: "Trinity Tatum", age: 22, hometown: "Newport News, VA",
+    job: "Makeup Artist & Model", entry: 1, exit: null, status: "active",
+    type: "og", accent: "green",
+    couple: "Bryce Dettloff", kalshi: "4%",
+    igHandle: "@trinity_tatum", igPre: 2250, igNow: 47250,
+    dramaScore: 3,
+    controversies: ["Initially concerned about the 7-year age gap with Bryce","Warned the girls 'no guy is safe' when entering — immediately became a fan favourite quote","Some fans feel their couple lacks genuine romantic chemistry despite individual appeal"],
+    platforms: ["reddit"],
+    viral: "'No guy is safe' as she entered. +45k Instagram followers in week one (2,000% growth). Stirs the pot without crossing into malice.",
+    bio: "One of the most liked women in the villa — praised for playful commentary, welcoming bombshells, and keeping things fun. Her connection with Bryce is growing slowly after his Soul Ties vulnerability moment.",
+    highlight: "Told Melanie directly that her Corbin behaviour was too much — but with humour, not aggression. The tone all fans wished they could strike."
+  },
+  {
+    id: 16, name: "Zach Georgiou", age: 26, hometown: "Birmingham, UK",
+    job: "Digital Content Creator", entry: 1, exit: null, status: "active",
+    type: "og", accent: "cyan",
+    couple: "Kayda Bosse / Jen Terry", kalshi: "12%",
+    igHandle: "@zachgeorgiou", igPre: 18000, igNow: 38000,
+    dramaScore: 5,
+    controversies: ["Told the group Kenzie was not his 'typical physical type' on Day 1 — left her feeling embarrassed","Abandoned Kenzie the moment Kayda arrived","Despite discussing exclusivity with Kayda <24 hours earlier, reversed his stance on Day 7 after she kissed Caleb","Immediately pivoted to new bombshell Jen Terry, bonding over Taylor Swift and One Direction"],
+    platforms: ["reddit"],
+    viral: "Brother of Season 7's Charlie Georgiou — embedded family narrative from day one. His cereal-eating, submissive villa energy became a running joke.",
+    bio: "Charlie Georgiou's younger brother, inserted into the season to leverage multi-season nostalgia. His low-drama 'laid-back' energy was initially charming — now looks like strategic indecision between Kayda and Jen.",
+    highlight: "Told Kayda he no longer wanted to be exclusive — the same day he'd discussed closing off their relationship. Kayda's face said everything."
+  },
+  {
+    id: 17, name: "Vasana Montgomery", age: 23, hometown: "Beaverton, OR",
+    job: "Salon Owner & Influencer", entry: null, exit: 0, status: "dq",
+    type: "og", accent: "orange",
+    couple: "N/A", kalshi: "N/A",
+    igHandle: "@vasana_vibes", igPre: null, igNow: null,
+    dramaScore: 10,
+    controversies: ["Two videos surfaced showing her using the N-word: once singing along to a song, once yelling at an arcade game","Removed from cast 3 days before the June 2 premiere","Production scrambled — Gabriel Vasconcelos was held back and reintroduced as a Day 2 bombshell to restore gender balance","Mirrors Season 7 removals of Yulissa Escobar and Cierra Ortega for similar casual racism","Later issued a public apology"],
+    platforms: ["twitter"],
+    viral: "Disqualified before ever entering the villa — the pre-show controversy dominated the news cycle.",
+    bio: "The season's pre-show crisis. Oregon salon owner and influencer whose videos circulated three days before premiere. Her removal forced a last-minute structural pivot with Gabriel. She later issued a public apology.",
+    highlight: "Her removal forced production to reclassify Gabriel Vasconcelos from OG islander to Day 2 bombshell to restore the gender balance."
+  }
+];
+
+const TIMELINE_DATA = [
+  {
+    day: "Day 1 — Episode 1", color: "var(--cyan)",
+    title: "Initial Couplings + Green/Red Dot Twist",
+    open: true,
+    events: [
+      { type: "default", text: "Trinity selects Bryce Dettloff", arrow: "→" },
+      { type: "default", text: "Beatriz selects Sean Reifel", arrow: "→" },
+      { type: "default", text: "Kenzie selects Zach Georgiou", arrow: "→" },
+      { type: "default", text: "Sincere chooses Melanie over Aniya", arrow: "→" },
+      { type: "default", text: "Aniya + KC paired by default (both unchosen)", arrow: "🔗" },
+      { type: "bombshell", text: "Red/Green dot game: Beatriz, Kenzie, Bryce, Trinity all go RED (open). Melanie/Sincere and Aniya/KC go GREEN.", arrow: "🎯" }
+    ],
+    drama: "Zach admits Kenzie is 'not his typical type' in front of everyone. Kenzie visibly stung."
+  },
+  {
+    day: "Day 2-3 — Episode 2", color: "var(--yellow)",
+    title: "Bombshell Thefts: Gabriel & Kayda Enter",
+    open: false,
+    events: [
+      { type: "bombshell", text: "Gabriel Vasconcelos + Kayda Bosse enter as Day 2 bombshells", arrow: "💣" },
+      { type: "steal", text: "Gabriel takes Beatriz on a date → steals her at the fire pit", arrow: "🔥" },
+      { type: "steal", text: "Kayda takes Zach on a date → steals him at the fire pit", arrow: "🔥" },
+      { type: "dumped", text: "Sean Reifel left single and vulnerable", arrow: "💔" },
+      { type: "dumped", text: "Kenzie Annis left single and vulnerable", arrow: "💔" }
+    ],
+    drama: "Kenzie blows a sarcastic kiss at Zach and says 'He wanted a girl with dark hair, he got it.'"
+  },
+  {
+    day: "Day 5 — Episode 4-5", color: "var(--orange)",
+    title: "Bombshell: Corbin Mims + Office Challenge",
+    open: false,
+    events: [
+      { type: "bombshell", text: "Corbin Mims enters during the Office Slime Challenge", arrow: "💣" },
+      { type: "bombshell", text: "Women secretly meet and kiss Corbin in a hidden room. Men sit in slime pit.", arrow: "🤫" },
+      { type: "default", text: "Melanie immediately pulls Corbin, ignoring girl code agreement to give Kenzie first access", arrow: "⚡" },
+      { type: "default", text: "Beatriz confronts Melanie: 'correct your behaviour'", arrow: "👊" }
+    ],
+    drama: "Melanie: 'Give me 10, give me FUCKING 10' — becomes the season's first viral meme."
+  },
+  {
+    day: "Day 6 — Episode 5", color: "var(--pink)",
+    title: "First Formal Recoupling + Sean Dumped",
+    open: false,
+    events: [
+      { type: "steal", text: "Corbin couples with Kenzie (first choice as newest islander)", arrow: "✅" },
+      { type: "default", text: "Beatriz stays with Gabriel", arrow: "✅" },
+      { type: "default", text: "Kayda stays with Zach", arrow: "✅" },
+      { type: "default", text: "Trinity stays with Bryce", arrow: "✅" },
+      { type: "default", text: "Aniya stays with KC", arrow: "✅" },
+      { type: "default", text: "Melanie stays with Sincere", arrow: "✅" },
+      { type: "dumped", text: "Sean Reifel — left without a partner — DUMPED from the island", arrow: "🚪" }
+    ],
+    drama: "KC instigated Sean before the ceremony, asking if he was upset. Sean confronted Beatriz and said he no longer trusted their connection."
+  },
+  {
+    day: "Day 7 — Episode 6-7", color: "var(--purple)",
+    title: "Triple Bombshell Slumber Party Chaos",
+    open: false,
+    events: [
+      { type: "bombshell", text: "Caleb McDaniel, Jen Terry, and Sol Dean enter during the Slumber Party Challenge", arrow: "💣💣💣" },
+      { type: "steal", text: "Sol Dean and Sincere Rhea share a kiss — Sincere lies about it being once when it was twice", arrow: "😘😘" },
+      { type: "steal", text: "Gabriel kisses Sol on the Soul Ties terrace — Sol physically recoils: 'that was NOT it girl'", arrow: "💀" },
+      { type: "steal", text: "Kenzie immediately kisses Caleb — abandons Corbin entirely", arrow: "💅" },
+      { type: "steal", text: "Zach tells Kayda he's no longer closed off — immediately pursues Jen Terry", arrow: "🔄" },
+      { type: "bombshell", text: "FIRST PUBLIC VOTE OPENS — viewers choose new couples for bombshells", arrow: "📱" }
+    ],
+    drama: "App crashed at 9 PM ET from voter traffic. Voting extended 13.5 hours. Sol's red paint left on Sincere during blindfolded challenge exposed their kiss to the villa."
+  }
+];
+
+const SOCIAL_DATA = [
+  { name: "Kenzie Annis", pre: 14000, now: 90000, pct: 1250, growth: 76000, color: "var(--yellow)" },
+  { name: "Melanie Moreno", pre: 10000, now: 60000, pct: 600, growth: 50000, color: "var(--pink)" },
+  { name: "Trinity Tatum", pre: 2250, now: 47250, pct: 2000, growth: 45000, color: "var(--green)" },
+  { name: "Sincere Rhea", pre: 15000, now: 61000, pct: 307, growth: 46000, color: "var(--orange)" },
+  { name: "Aniya Harvey", pre: 25000, now: 91000, pct: 264, growth: 66000, color: "var(--cyan)" },
+  { name: "Zach Georgiou", pre: 18000, now: 38000, pct: 111, growth: 20000, color: "var(--cyan)" },
+  { name: "Gabriel Vasconcelos", pre: 20000, now: 42000, pct: 110, growth: 22000, color: "var(--purple)" },
+  { name: "Kayda Bosse", pre: 6000, now: 22000, pct: 267, growth: 16000, color: "var(--pink)" },
+  { name: "KC Chandler", pre: 4000, now: 15000, pct: 275, growth: 11000, color: "var(--cyan)" },
+  { name: "Corbin Mims", pre: 8000, now: 25000, pct: 213, growth: 17000, color: "var(--orange)" },
+  { name: "Beatriz Hatz", pre: 15000, now: 35000, pct: 133, growth: 20000, color: "var(--pink)" },
+  { name: "Sean Reifel", pre: 1000, now: 28000, pct: 2700, growth: 27000, color: "var(--orange)" },
+  { name: "Bryce Dettloff", pre: 135000, now: 140000, pct: 3.7, growth: 5000, color: "var(--purple)" },
+  { name: "Sol Dean", pre: 11000, now: 16000, pct: 45, growth: 5000, color: "var(--green)" },
+  { name: "Jen Terry", pre: 12000, now: 18000, pct: 50, growth: 6000, color: "var(--yellow)" },
+  { name: "Caleb McDaniel", pre: 5000, now: 12000, pct: 140, growth: 7000, color: "var(--yellow)" }
+];
+
+const SENTIMENT_LOVED = [
+  { name: "Beatriz Hatz", reason: "The undisputed fan favourite. Her confrontation with Melanie, prosthetic leg representation, and unbothered confidence make her universally loved.", platforms: ["reddit","tiktok"] },
+  { name: "Aniya Harvey", reason: "Described as the 'unproblematic queen' — the online community actively shields her and praises her level-headedness.", platforms: ["reddit","twitter"] },
+  { name: "Trinity Tatum", reason: "Pot-stirrer with perfect energy. Stirs without malice, welcomes bombshells, delivers one-liners.", platforms: ["reddit","tiktok"] },
+  { name: "Kenzie Annis", reason: "Her redemption arc (Zach → trapped with Corbin → saved by Caleb) has the whole internet cheering.", platforms: ["tiktok","reddit"] },
+  { name: "Caleb McDaniel", reason: "Arrived Day 7, already beloved. Fans see him as Kenzie's deserved upgrade.", platforms: ["reddit","twitter"] }
+];
+
+const SENTIMENT_DISLIKED = [
+  { name: "Melanie Moreno", reason: "Reddit calls her a 'toxic pick-me.' Her performative name-forgetting and 'Give me 10' meltdown define the backlash. TikTok loves her though — split reception.", platforms: ["reddit","twitter"] },
+  { name: "Corbin Mims", reason: "'Puddle-deep Miami omen.' Uses identical scripts on different women. Faked his handcuff fantasy. Reddit has receipts.", platforms: ["reddit","twitter"] },
+  { name: "Sincere Rhea", reason: "Normalised cheating ('it happens'), refers to Aniya as 'big dawg', kissed Sol twice but admitted to once.", platforms: ["reddit","twitter"] },
+  { name: "Vasana Montgomery", reason: "Disqualified pre-show for N-word videos. Never entered the villa.", platforms: ["twitter"] },
+  { name: "KC Chandler", reason: "On-screen: beloved. Off-screen: unverified domestic abuse TikTok has created a significant divide on Twitter/X.", platforms: ["twitter"] },
+  { name: "Gabriel Vasconcelos", reason: "Trump follow + 'soulless NPC' label in Week 1. Audience softened slightly after his third-language vulnerability moment.", platforms: ["twitter","reddit"] }
+];
+
+const DRAMA_DATA = [
+  { title: "Sincere — Melanie — Sol", intensity: "high", names: ["Sincere", "Melanie", "Sol Dean"], desc: "The season's central love triangle. Sincere chose Melanie but kissed Sol twice on Day 7, admitted to once. Melanie sensed his emotional withdrawal before he said a word. Their partnership is barely holding together." },
+  { title: "Kenzie — Corbin — Caleb", intensity: "high", names: ["Kenzie", "Corbin", "Caleb"], desc: "Kenzie was rescued from her failing Corbin pairing by Caleb's arrival. Fans are voting hard to make her and Caleb official. Kenzie already called Corbin a 'fuck boy' to his face before Caleb even walked in." },
+  { title: "Gabriel — Beatriz — Sol", intensity: "med", names: ["Gabriel", "Beatriz", "Sol Dean"], desc: "Gabriel kissed Sol on the Soul Ties terrace while coupled with Beatriz. Sol rejected him ('not it, girl'). Gabriel then pursued Jen Terry. Beatriz's position is increasingly uncertain." },
+  { title: "Zach — Kayda — Jen", intensity: "high", names: ["Zach", "Kayda", "Jen Terry"], desc: "Less than 24 hours after discussing exclusivity with Kayda, Zach told her he no longer wanted to be closed off — then immediately bonded with Jen Terry over Taylor Swift and One Direction." },
+  { title: "Melanie vs Beatriz", intensity: "high", names: ["Melanie", "Beatriz"], desc: "'I told you this so you could correct your behaviour.' Beatriz called out Melanie's Corbin approach and girl code violation. Melanie fled sobbing. Internet declared Beatriz the winner unanimously." },
+  { title: "Bryce — Trinity — Jen", intensity: "low", names: ["Bryce", "Trinity", "Jen Terry"], desc: "Bryce whispered 'I know the blonde' when Jen Terry walked in (they're modelling colleagues from LA). Trinity is aware. Bryce has maintained focus on Trinity despite the complicated pre-existing connection." },
+  { title: "Aniya + KC: External Pressure", intensity: "low", names: ["Aniya", "KC", "Sol Dean"], desc: "Sincere told Aniya that Sol resembles KC's ex. KC responded with clear reassurance — called Aniya 'the blueprint'. Ended with a terrace make-out cheered by the villa. Survived." },
+  { title: "Melanie vs Kayda: Name Games", intensity: "med", names: ["Melanie", "Kayda"], desc: "Melanie spent days calling Kayda 'Katie', 'Koda', and 'coyote'. Then used her real name to target her in a challenge, exposing the 'forgetfulness' as performative." }
+];
+
+const CHALLENGES_DATA = [
+  { day: "Day 1", name: "The Door Lock Icebreaker", color: "var(--cyan)", desc: "Contestants answered questions and stood behind doors. If two islanders of opposite genders were on opposite sides of the same door — they had to kiss. Established baseline physical chemistry on entry." },
+  { day: "Day 4", name: "Sex Facts & Pool Push", color: "var(--yellow)", desc: "Anonymous sexual history facts were read aloud. Guess correctly who the fact belongs to — they get pushed in the pool. Exposed Gabriel's history with older women, earning him the 'Reverse Leonardo DiCaprio' title." },
+  { day: "Day 5", name: "Office Slime & Secret Room", color: "var(--pink)", desc: "Women kissed a mystery man in a secret room. Men sat in a slime pit unaware he existed. The mystery man was Corbin Mims. Melanie violated girl code by pulling him first, triggering the 'Give me 10' saga." },
+  { day: "Day 7", name: "Slumber Party Blindfolded Reveal", color: "var(--purple)", desc: "Blindfolded kissing challenge to introduce Sol Dean and Jen Terry. Sol's red paint left on Sincere outed their kiss. Ariana then introduced Caleb McDaniel as a 'bonus bombshell.' Maximum chaos achieved." }
+];
+
+const ODDS_DATA = [
+  { rank: "01", couple: "Aniya Harvey & KC Chandler", pct: 31, color: "var(--cyan)", note: "Most stable, mature couple. Chemistry questioned but communication is top tier." },
+  { rank: "02", couple: "Kayda Bosse & Zach Georgiou", pct: 12, color: "var(--pink)", note: "Solid Reddit standing but Zach is already looking at Jen Terry. Vulnerable." },
+  { rank: "03", couple: "Kenzie Annis & Caleb McDaniel", pct: 8, color: "var(--yellow)", note: "Enormous public support. Kenzie's redemption arc. Fans are actively voting for this." },
+  { rank: "04", couple: "Sol Dean & Sincere Rhea", pct: 7, color: "var(--green)", note: "High visual appeal, toxic energy. Expected to blow up Melanie and Sincere completely." },
+  { rank: "05", couple: "Trinity Tatum & Bryce Dettloff", pct: 4, color: "var(--purple)", note: "Popular individually, chemistry questioned. Jen Terry pre-existing connection adds tension." },
+  { rank: "06", couple: "Melanie Moreno & Corbin Mims", pct: 0, color: "var(--muted)", note: "Bottom tier / vulnerable. Voters actively trying to make them single to secure eviction." },
+  { rank: "07", couple: "Beatriz Hatz & Gabriel Vasconcelos", pct: 0, color: "var(--muted)", note: "Bottom tier. Beatriz has huge individual support but Gabriel's pursuits of Sol and Jen weaken them." }
+];
+
+let currentChartMode = 'current';
+
+// ===================== RENDER ISLANDERS =====================
+function renderIslanders(filter = 'all', sort = null) {
+  const grid = document.getElementById('islandersGrid');
+  let items = [...ISLANDERS];
+
+  if (filter === 'active') items = items.filter(i => i.status === 'active');
+  else if (filter === 'dumped') items = items.filter(i => i.status === 'dumped');
+  else if (filter === 'og') items = items.filter(i => i.type === 'og');
+  else if (filter === 'bombshell') items = items.filter(i => i.type === 'bombshell');
+
+  if (sort === 'growth') items.sort((a, b) => ((b.igNow||0) - (b.igPre||0)) - ((a.igNow||0) - (a.igPre||0)));
+  else if (sort === 'drama') items.sort((a, b) => b.dramaScore - a.dramaScore);
+
+  grid.innerHTML = items.map(i => {
+    const growth = i.igNow && i.igPre ? `+${((i.igNow - i.igPre)/1000).toFixed(0)}k` : '';
+    const dramaW = (i.dramaScore / 10) * 100;
+    const dramaColor = i.dramaScore >= 8 ? 'var(--pink)' : i.dramaScore >= 5 ? 'var(--yellow)' : 'var(--green)';
+    const statusLabel = i.status === 'active' ? 'In villa' : i.status === 'dumped' ? 'Dumped' : 'DQ';
+    return `<div class="islander-card" data-accent="${i.accent}" data-id="${i.id}" onclick="openModal(${i.id})">
+      <div class="card-status">
+        <span class="status-dot ${i.status}"></span>
+        <span style="color:var(--muted)">${statusLabel}</span>
+        <span style="color:var(--muted);margin-left:4px">Day ${i.entry || 'DQ'}</span>
+      </div>
+      <div class="card-name">${i.name}</div>
+      <div class="card-age-loc">${i.age} · ${i.hometown.split(',')[1]?.trim() || i.hometown}</div>
+      <div class="card-job">${i.job}</div>
+      ${i.couple !== 'N/A' ? `<div class="card-couple"><span style="color:var(--pink)">♥</span> ${i.couple}</div>` : ''}
+      <div class="card-drama">
+        <div class="drama-label">Drama level</div>
+        <div class="drama-bar">
+          <div class="drama-fill" style="width:${dramaW}%;background:${dramaColor}"></div>
+        </div>
+      </div>
+      ${growth ? `<div class="card-ig-growth mono">${growth} IG</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ===================== RENDER TIMELINE =====================
+function renderTimeline() {
+  const el = document.getElementById('timelineEl');
+  el.innerHTML = TIMELINE_DATA.map((ep, idx) => {
+    const bodyClass = ep.open ? 'episode-body open' : 'episode-body';
+    const eventsHtml = ep.events.map(e => `
+      <div class="coupling-item ${e.type}">
+        <span class="arrow">${e.arrow}</span>
+        <span>${e.text}</span>
+      </div>`).join('');
+    return `<div class="timeline-episode">
+      <span class="timeline-dot" style="background:${ep.color}"></span>
+      <div class="episode-header" onclick="toggleEpisode(this)">
+        <span class="episode-day">${ep.day}</span>
+        <span class="episode-title">${ep.title}</span>
+        <span class="episode-toggle">${ep.open ? '▲' : '▼'}</span>
+      </div>
+      <div class="${bodyClass}">
+        <div class="coupling-changes">${eventsHtml}</div>
+        ${ep.drama ? `<div style="margin-top:12px;padding:12px;background:rgba(255,60,172,0.06);border:1px solid rgba(255,60,172,0.15);border-radius:8px;font-size:12px;color:var(--muted)">🔥 ${ep.drama}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleEpisode(header) {
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.episode-toggle');
+  body.classList.toggle('open');
+  toggle.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+// ===================== RENDER SOCIAL CHART =====================
+function renderBarChart(mode) {
+  const el = document.getElementById('barChartEl');
+  let sorted = [...SOCIAL_DATA];
+  let key, label, suffix;
+  if (mode === 'current') { key = 'now'; label = 'Current followers'; suffix = 'k'; sorted.sort((a,b) => b.now - a.now); }
+  else if (mode === 'growth') { key = 'growth'; label = 'Absolute growth'; suffix = 'k'; sorted.sort((a,b) => b.growth - a.growth); }
+  else { key = 'pct'; label = '% growth'; suffix = '%'; sorted.sort((a,b) => b.pct - a.pct); }
+
+  const max = sorted[0][key];
+  el.innerHTML = sorted.map(d => {
+    const val = d[key];
+    const pct = (val / max) * 100;
+    const display = mode === 'pct' ? `${val}%` : `${(val/1000).toFixed(0)}k`;
+    return `<div class="bar-row">
+      <div class="bar-name">${d.name.split(' ')[0]}</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:0%;background:${d.color}" data-target="${pct}">
+          <span class="bar-fill-val">${display}</span>
+        </div>
+      </div>
+      <div class="bar-tooltip">
+        <strong>${d.name}</strong><br>
+        ${label}: ${mode === 'pct' ? val + '%' : (val/1000).toFixed(0) + 'k'}<br>
+        Pre-show: ${(d.pre/1000).toFixed(0)}k → Now: ${(d.now/1000).toFixed(0)}k
+      </div>
+    </div>`;
+  }).join('');
+  setTimeout(() => animateBars(), 50);
+}
+
+function animateBars() {
+  document.querySelectorAll('.bar-fill').forEach(bar => {
+    const target = bar.dataset.target;
+    bar.style.width = target + '%';
+  });
+}
+
+function switchChart(mode) {
+  currentChartMode = mode;
+  document.querySelectorAll('.chart-toggle button').forEach((b, i) => {
+    b.classList.toggle('active', ['current','growth','pct'][i] === mode);
+  });
+  renderBarChart(mode);
+}
+
+// ===================== RENDER SENTIMENT =====================
+function renderSentiment() {
+  document.getElementById('lovedList').innerHTML = SENTIMENT_LOVED.map(s => `
+    <div class="sentiment-item" style="border-color:rgba(57,255,20,0.2)">
+      <div class="sentiment-item-name">${s.name}</div>
+      <div class="sentiment-item-reason">${s.reason}</div>
+      <div class="sentiment-item-platforms">${s.platforms.map(p => `<span class="platform-badge ${p}">${p}</span>`).join('')}</div>
+    </div>`).join('');
+
+  document.getElementById('dislikedList').innerHTML = SENTIMENT_DISLIKED.map(s => `
+    <div class="sentiment-item" style="border-color:rgba(255,60,172,0.2)">
+      <div class="sentiment-item-name">${s.name}</div>
+      <div class="sentiment-item-reason">${s.reason}</div>
+      <div class="sentiment-item-platforms">${s.platforms.map(p => `<span class="platform-badge ${p}">${p}</span>`).join('')}</div>
+    </div>`).join('');
+}
+
+// ===================== RENDER DRAMA =====================
+function renderDrama() {
+  document.getElementById('dramaGrid').innerHTML = DRAMA_DATA.map(d => `
+    <div class="drama-card">
+      <div class="drama-card-title">
+        ${d.title}
+        <span class="drama-intensity ${d.intensity}">${d.intensity === 'high' ? '🔥 high' : d.intensity === 'med' ? '⚡ med' : '💚 low'}</span>
+      </div>
+      <div class="names-row">
+        ${d.names.map((n,i) => `<span class="name-chip">${n}</span>${i < d.names.length-1 ? '<span class="triangle-arrow">⇄</span>' : ''}`).join('')}
+      </div>
+      <p>${d.desc}</p>
+    </div>`).join('');
+}
+
+// ===================== RENDER CHALLENGES =====================
+function renderChallenges() {
+  document.getElementById('challengesGrid').innerHTML = CHALLENGES_DATA.map(c => `
+    <div class="challenge-card" style="border-top-color:${c.color}">
+      <div class="challenge-day">${c.day}</div>
+      <div class="challenge-name">${c.name}</div>
+      <div class="challenge-desc">${c.desc}</div>
+    </div>`).join('');
+}
+
+// ===================== RENDER ODDS =====================
+function renderOdds() {
+  document.getElementById('oddsList').innerHTML = ODDS_DATA.map(o => {
+    const barW = o.pct > 0 ? (o.pct / 31) * 100 : 5;
+    return `<div class="odds-item">
+      <span class="odds-rank mono">${o.rank}</span>
+      <span class="odds-names">${o.couple}</span>
+      <div class="odds-bar-wrap">
+        <div class="odds-bar-fill" style="background:${o.color};width:0%" data-target="${barW}"></div>
+      </div>
+      <span class="odds-pct mono" style="color:${o.color}">${o.pct > 0 ? o.pct + '%' : '—'}</span>
+    </div>`;
+  }).join('');
+  setTimeout(() => {
+    document.querySelectorAll('.odds-bar-fill').forEach(b => b.style.width = b.dataset.target + '%');
+  }, 200);
+}
+
+// ===================== MODAL =====================
+const ACCENT_COLORS = { pink: 'var(--pink)', yellow: 'var(--yellow)', cyan: 'var(--cyan)', orange: 'var(--orange)', green: 'var(--green)', purple: 'var(--purple)' };
+
+function openModal(id) {
+  const d = ISLANDERS.find(i => i.id === id);
+  if (!d) return;
+  const accentColor = ACCENT_COLORS[d.accent] || 'var(--pink)';
+
+  document.getElementById('modalAccentBar').style.background = accentColor;
+  document.getElementById('modalHeaderContent').innerHTML = `
+    <div class="card-status" style="margin-top:16px">
+      <span class="status-dot ${d.status}"></span>
+      <span style="color:var(--muted)">${d.status === 'active' ? 'In villa' : d.status === 'dumped' ? 'Dumped Day '+d.exit : 'Disqualified'}</span>
+    </div>
+    <div class="modal-name">${d.name}</div>
+    <div class="modal-meta">${d.age} · ${d.hometown} · ${d.job}</div>`;
+
+  const growth = d.igNow && d.igPre ? `+${((d.igNow - d.igPre)/1000).toFixed(0)}k (${Math.round(((d.igNow-d.igPre)/d.igPre)*100)}%)` : 'N/A';
+
+  document.getElementById('modalBody').innerHTML = `
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px">${d.bio}</p>
+
+    <div class="modal-grid">
+      <div class="modal-stat-box">
+        <div class="msb-label">Current Couple</div>
+        <div class="msb-val" style="font-size:14px;color:${accentColor}">${d.couple}</div>
+      </div>
+      <div class="modal-stat-box">
+        <div class="msb-label">Kalshi Odds</div>
+        <div class="msb-val" style="color:${accentColor}">${d.kalshi}</div>
+      </div>
+      <div class="modal-stat-box">
+        <div class="msb-label">Instagram</div>
+        <div class="msb-val" style="font-size:13px">${d.igHandle}</div>
+      </div>
+      <div class="modal-stat-box">
+        <div class="msb-label">IG Growth (Week 1)</div>
+        <div class="msb-val" style="font-size:14px;color:var(--green)">${growth}</div>
+      </div>
+      <div class="modal-stat-box">
+        <div class="msb-label">Drama Level</div>
+        <div class="msb-val" style="color:${d.dramaScore >= 8 ? 'var(--pink)' : d.dramaScore >= 5 ? 'var(--yellow)' : 'var(--green)'}">${d.dramaScore}/10</div>
+      </div>
+      <div class="modal-stat-box">
+        <div class="msb-label">Entry Day</div>
+        <div class="msb-val">${d.entry ? 'Day '+d.entry : 'Pre-show DQ'}</div>
+      </div>
+    </div>
+
+    <div class="modal-section-title">✦ Villa Highlight</div>
+    <div style="background:rgba(255,60,172,0.06);border:1px solid rgba(255,60,172,0.15);border-radius:8px;padding:14px;font-size:13px;line-height:1.6;margin-bottom:4px">
+      ${d.highlight}
+    </div>
+
+    <div class="modal-section-title">✦ Viral Moment</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:8px">${d.viral}</div>
+
+    <div class="modal-section-title">✦ Controversies & Drama</div>
+    <div class="modal-controversies">
+      ${d.controversies.map(c => `<div class="controversy-item">${c}</div>`).join('')}
+    </div>`;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+
+// ===================== FILTER BUTTONS =====================
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const f = this.dataset.filter;
+    if (f.startsWith('sort-')) {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        if (b.dataset.filter.startsWith('sort-')) b.classList.remove('active');
+      });
+      this.classList.add('active');
+      renderIslanders('all', f.replace('sort-',''));
+    } else {
+      document.querySelectorAll('.filter-btn:not([data-filter^="sort"])').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      renderIslanders(f);
+    }
+  });
+});
+
+// ===================== COUNTER ANIMATION =====================
+function animateCounters() {
+  document.querySelectorAll('[data-target]').forEach(el => {
+    const target = parseFloat(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1600;
+    const start = performance.now();
+    const isFloat = target % 1 !== 0;
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const val = target * ease;
+      el.textContent = (isFloat ? val.toFixed(1) : Math.floor(val)) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+// ===================== INTERSECTION OBSERVER =====================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      if (e.target.id === 'social') {
+        renderBarChart(currentChartMode);
+      }
+      if (e.target.id === 'odds') {
+        setTimeout(() => document.querySelectorAll('.odds-bar-fill').forEach(b => b.style.width = b.dataset.target + '%'), 100);
+      }
+    }
+  });
+}, { threshold: 0.1 });
+
+// ===================== INIT =====================
+document.addEventListener('DOMContentLoaded', () => {
+  renderIslanders();
+  renderTimeline();
+  renderBarChart('current');
+  renderSentiment();
+  renderDrama();
+  renderChallenges();
+  renderOdds();
+  animateCounters();
+
+  document.querySelectorAll('section').forEach(s => observer.observe(s));
+});
+</script>
+</body>
+</html>
